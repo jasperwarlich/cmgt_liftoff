@@ -13,13 +13,13 @@ public class Player : AnimationSprite
     private float ySpeed = 0;
     private float jumpSpeed = -10;
     private bool isJumping;
-    private int boundary;
-    private float highest;
-    private bool firstTime;
+    //private int boundary;
+    //private float highest;
+    //private bool firstTime;
 
     public Player(TiledObject obj = null) : base("barry.png", 7, 1, -1, false, true)
     {
-        boundary = game.height / 2;
+       // boundary = game.height / 2;
     }
 
     void Update()
@@ -60,7 +60,7 @@ public class Player : AnimationSprite
         }
     }
 
-    void CameraFollow()
+    /*void CameraFollow()
     {
         parent.y = game.height - boundary - y;
         if (!firstTime)
@@ -73,7 +73,7 @@ public class Player : AnimationSprite
         {
             highest = parent.y;
         }
-    }
+    }*/
 
     void OnCollision(GameObject other)
     {

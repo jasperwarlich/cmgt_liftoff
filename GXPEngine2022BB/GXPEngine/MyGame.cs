@@ -15,9 +15,7 @@ public class MyGame : Game
 
     void Update()
     {
-        this.y += .5f;
-        //this.y = level.player.y;
-        Console.WriteLine(height);
+        
     }
     void LoadLevel(string filename)
     {

@@ -7,6 +7,9 @@ public class Level : GameObject {
     private TiledLoader loader;
 
     public Player player { get; private set; }
+
+    HUD hud;
+
     public Level(string filename)
     {
         loader = new TiledLoader(filename);
@@ -15,21 +18,20 @@ public class Level : GameObject {
 
     void Update()
     {
-        this.y = game.y;
+        Console.WriteLine(player);
     }
     void CreateLevel()
     {
-        
+      
         loader.autoInstance = true;
         loader.LoadObjectGroups();
         loader.addColliders = true;
         loader.LoadTileLayers(1);
         loader.addColliders = false;
-        loader.rootObject = this;
         loader.LoadTileLayers(0);
-            
-        
-        player = FindObjectOfType<Player>();
+       
+        player = game.FindObjectOfType<Player>();
+        hud = new HUD();
+        game.AddChild(hud);
     }
 }
-
