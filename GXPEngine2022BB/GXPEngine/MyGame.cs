@@ -4,24 +4,28 @@ using System.Drawing;							// System.Drawing contains drawing tools such as Col
 
 public class MyGame : Game
 {
-	string levelName = "map.tmx";
-	Level level;
-	public MyGame() : base(1344, 960, false)		// Create a window that's 800x600 and NOT fullscreen
-	{
-		LoadLevel(levelName);
-	}
+    string levelName = "map.tmx";
 
-	void Update()
-	{
-       // Console.WriteLine(y);
-	}
-	void LoadLevel(string filename) {
+    public Level level;
+    public MyGame() : base(1344, 960, false)        // Create a window that's 800x600 and NOT fullscreen
+    {
+        LoadLevel(levelName);
+        Console.WriteLine(height);
+    }
 
-		level = new Level(filename);
-		AddChild(level);		
-	}
-	static void Main()							// Main() is the first method that's called when the program is run
-	{
-		new MyGame().Start();					// Create a "MyGame" and start it
-	}
+    void Update()
+    {
+        this.y += .5f;
+        //this.y = level.player.y;
+        Console.WriteLine(height);
+    }
+    void LoadLevel(string filename)
+    {
+        level = new Level(filename);
+        AddChild(level);
+    }
+    static void Main()                          // Main() is the first method that's called when the program is run
+    {
+        new MyGame().Start();                   // Create a "MyGame" and start it
+    }
 }
