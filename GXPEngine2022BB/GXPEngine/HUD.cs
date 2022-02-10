@@ -18,7 +18,6 @@ public class HUD : GameObject
         score = new EasyDraw(250, 60);
         score.Fill(Color.Blue);
         //score.TextFont(font);
-        score.Text("aaaaaaaa");
         score.SetXY(30, 0);
         AddChild(score);
     }
@@ -26,6 +25,6 @@ public class HUD : GameObject
     public void ChechScore()
     {
         score.Clear(Color.Transparent);
-        score.Text(String.Format("Score:" + (int)player.y));
+        score.Text(String.Format("Score:" + (int)player.score));
     }
 }

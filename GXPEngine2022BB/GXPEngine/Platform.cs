@@ -10,7 +10,7 @@ public class Platform : Sprite
     private bool startMoving;
     private float movingSpeed;
 
-    public Platform(TiledObject obj = null) : base("circle.png")
+    public Platform(TiledObject obj = null) : base("leaf_platform_80.png")
     {
         this.collider.isTrigger = false;
         startMoving = false;
@@ -19,6 +19,7 @@ public class Platform : Sprite
 
     protected virtual void Update()
     {
+        IncreaseDifficulty();
         if (startMoving)
         {
             movingSpeed = 3f;
@@ -39,6 +40,10 @@ public class Platform : Sprite
         {
             startMoving = true;
         }
+    }
+
+    void IncreaseDifficulty() {
+        if (((MyGame)game).level.player.score >= 1000) { movingSpeed = 5f; }
     }
 
     void OnCollision(GameObject other)

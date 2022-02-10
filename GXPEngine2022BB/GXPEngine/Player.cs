@@ -14,6 +14,11 @@ public class Player : AnimationSprite
     private float jumpSpeed = -25;
     private bool isJumping;
     private bool doubleJump;
+
+    public int score { get; private set; }
+
+    public bool playerDead { get; private set; }
+
     //private int boundary;
     //private float highest;
     //private bool firstTime;
@@ -21,13 +26,15 @@ public class Player : AnimationSprite
     public Player(TiledObject obj = null) : base("barry.png", 7, 1, -1, false, true)
     {
         // boundary = game.height / 2;
+        score = 0;
+        playerDead = false;
     }
 
     void Update()
     {
-        Console.WriteLine(doubleJump);
         Movement();
         PlayerJump();
+        PlayerDead();
         // CameraFollow();
         // if (this.y > game.y) { Console.WriteLine("aaaaaaaa"); }
     }
@@ -67,8 +74,16 @@ public class Player : AnimationSprite
                 ySpeed = jumpSpeed;
                 doubleJump = false;
             }
-        }
+        }   
+        if(isJumping)
+            score++;
+    }
 
+    void PlayerDead() {
+        if (this.y > game.height)
+        {
+            playerDead = true;
+        }
     }
 
     void OnCollision(GameObject other)
