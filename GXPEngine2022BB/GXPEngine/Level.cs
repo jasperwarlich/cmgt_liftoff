@@ -18,7 +18,7 @@ public class Level : GameObject {
 
     void Update()
     {
-        Console.WriteLine(player);
+        hud.ChechScore();
     }
     void CreateLevel()
     {
@@ -26,12 +26,12 @@ public class Level : GameObject {
         loader.autoInstance = true;
         loader.LoadObjectGroups();
         loader.addColliders = true;
-        loader.LoadTileLayers(1);
-        loader.addColliders = false;
         loader.LoadTileLayers(0);
+        loader.addColliders = false;
+        loader.LoadTileLayers(1);
        
         player = game.FindObjectOfType<Player>();
-        hud = new HUD();
+        hud = new HUD(player);
         game.AddChild(hud);
     }
 }

@@ -9,25 +9,27 @@ using TiledMapParser;
 public class Player : AnimationSprite
 {
     private int speed = 5;
-    private float gravity = 0.2f;
+    private float gravity = 0.9f;
     private float ySpeed = 0;
-    private float jumpSpeed = -10;
+    private float jumpSpeed = -25;
     private bool isJumping;
+    private bool doubleJump;
     //private int boundary;
     //private float highest;
     //private bool firstTime;
 
     public Player(TiledObject obj = null) : base("barry.png", 7, 1, -1, false, true)
     {
-       // boundary = game.height / 2;
+        // boundary = game.height / 2;
     }
 
     void Update()
     {
+        Console.WriteLine(doubleJump);
         Movement();
         PlayerJump();
         // CameraFollow();
-       // if (this.y > game.y) { Console.WriteLine("aaaaaaaa"); }
+        // if (this.y > game.y) { Console.WriteLine("aaaaaaaa"); }
     }
 
     void Movement()
@@ -53,11 +55,29 @@ public class Player : AnimationSprite
             ySpeed = 0;
         }
 
-        if (Input.GetKeyDown(Key.SPACE) && !isJumping)
+        if (Input.GetKeyDown(Key.SPACE))
         {
-            ySpeed = jumpSpeed;
-            // isJumping = true;
+            if (!isJumping)
+            {
+                ySpeed = jumpSpeed;
+                isJumping = true;
+            }
+            else if (doubleJump)
+            {
+                ySpeed = jumpSpeed;
+                doubleJump = false;
+            }
         }
+
+    }
+
+    void OnCollision(GameObject other)
+    {
+        if (other is DoubleJumpPlatform)
+        {
+            doubleJump = true;
+        }
+        else { doubleJump = false; }
     }
 
     /*void CameraFollow()
@@ -75,13 +95,4 @@ public class Player : AnimationSprite
         }
     }*/
 
-    void OnCollision(GameObject other)
-    {
-        if (other is Platform && other.y > this.y + 50)
-        {
-            other.collider.isTrigger = false;
-
-        }
-        // else { other.collider.isTrigger = true; }
-    }
 }

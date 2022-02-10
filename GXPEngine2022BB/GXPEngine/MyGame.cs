@@ -10,7 +10,6 @@ public class MyGame : Game
     public MyGame() : base(1344, 960, false)        // Create a window that's 800x600 and NOT fullscreen
     {
         LoadLevel(levelName);
-        Console.WriteLine(height);
     }
 
     void Update()

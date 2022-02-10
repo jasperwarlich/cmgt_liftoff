@@ -1,0 +1,8 @@
+C:\Users\Stanislav\Documents\GitHub\cmgt_liftoff\GXPEngine2022BB\GXPEngine\bin\Debug\GXPEngine.exe.config
+C:\Users\Stanislav\Documents\GitHub\cmgt_liftoff\GXPEngine2022BB\GXPEngine\bin\Debug\GXPEngine.exe
+C:\Users\Stanislav\Documents\GitHub\cmgt_liftoff\GXPEngine2022BB\GXPEngine\bin\Debug\GXPEngine.pdb
+C:\Users\Stanislav\Documents\GitHub\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.csproj.AssemblyReference.cache
+C:\Users\Stanislav\Documents\GitHub\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.csproj.SuggestedBindingRedirects.cache
+C:\Users\Stanislav\Documents\GitHub\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
+C:\Users\Stanislav\Documents\GitHub\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.exe
+C:\Users\Stanislav\Documents\GitHub\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.pdb
