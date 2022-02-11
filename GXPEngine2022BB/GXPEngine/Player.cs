@@ -13,7 +13,9 @@ public class Player : AnimationSprite
     private float ySpeed = 0;
     private float jumpSpeed = -25;
     private bool isJumping;
-    private bool doubleJump;
+
+
+    public bool doubleJump { get; private set; }
 
     public int score { get; private set; }
 
@@ -23,7 +25,7 @@ public class Player : AnimationSprite
     //private float highest;
     //private bool firstTime;
 
-    public Player(TiledObject obj = null) : base("barry.png", 7, 1, -1, false, true)
+    public Player(TiledObject obj = null) : base("barry.png",7, 1, -1, false, true)
     {
         // boundary = game.height / 2;
         score = 0;
@@ -46,7 +48,9 @@ public class Player : AnimationSprite
         if (Input.GetKey(Key.D)) xSpeed = speed;
         if (Input.GetKey(Key.A)) xSpeed = -speed;
 
-        MoveUntilCollision(xSpeed, 0);
+
+        Move(xSpeed, 0);
+        //MoveUntilCollision(xSpeed, 0);
     }
 
     void PlayerJump()

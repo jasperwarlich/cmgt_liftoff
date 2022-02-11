@@ -8,12 +8,12 @@ using TiledMapParser;
 public class DoubleJumpPlatform : Platform
 {
 
-    public DoubleJumpPlatform(TiledObject obj = null) : base()
+    public DoubleJumpPlatform(TiledObject obj = null)
     {
 
     }
 
-  /*  protected override void Update() { 
+    /*protected override void Update() { 
         base.Update();
     }*/
 }
