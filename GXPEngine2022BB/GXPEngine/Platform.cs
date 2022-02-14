@@ -9,7 +9,7 @@ using TiledMapParser;
 public class Platform : Sprite
 {
     private bool startMoving;
-    private int movingSpeed;
+    private int movingSpeed = 0;
 
 
     public Platform(TiledObject obj = null) : base("leaf_platform_80.png")
@@ -30,25 +30,25 @@ public class Platform : Sprite
             this.collider.isTrigger = true;
         }
         else { this.collider.isTrigger = false; }
-        if (Input.AnyKey())
+        /*if (Input.AnyKey())
         {
             startMoving = true;
-        }
+        }*/
         IncreaseDifficulty();
     }
 
     void IncreaseDifficulty()
     {
 
-        if (startMoving && ((MyGame)game).level.player.score < 500)
+        if (((MyGame)game).level.player.score < 500)
         {
-            movingSpeed = 1;
+            movingSpeed = 0;
             this.y += movingSpeed;
         }
 
-        else if (((MyGame)game).level.player.score >= 500 && startMoving)
+        else if (((MyGame)game).level.player.score >= 500)
         {
-            movingSpeed = 2;
+            movingSpeed = 0;
             this.y += movingSpeed;
         }
         else { movingSpeed = 0; }

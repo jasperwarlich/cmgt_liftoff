@@ -11,15 +11,21 @@ public class Level : GameObject {
     HUD hud;
 
     List<Platform> platforms;
+    List<DoubleJumpPlatform> doubleJumps;
     private int platformAmount;
+    private int doublePlatformAmount;
+
 
     public Level(string filename)
     {
         //SetXY(0, -150);
         loader = new TiledLoader(filename);
+
         platforms = new List<Platform>();
+        doubleJumps = new List<DoubleJumpPlatform>();
         CreateLevel();
         platformAmount = platforms.Count;
+        doublePlatformAmount = doubleJumps.Count;
         //PlatformsSpawn();
     }
 
@@ -43,32 +49,25 @@ public class Level : GameObject {
             {
                 platforms.Remove(platform);
                 RemoveChild(platform);
-                //while (true)
-                //{
-                //    SetXY(platform.x, Utils.Random(-180, -80));
-                //    bool good = (platform.GetCollisions().Length <= 1);
- 
-                    
-                //    //foreach (Platform plat in platforms)
-                //    //{
-                //    //    if (!platform.Equals(plat) && (platform.y + platform.height <= plat.y || platform.y >= plat.y + plat.height)) awesome = true;
-                //    //    else awesome = false;
-                //    //    if (!platform.Equals(plat)) Console.WriteLine(Mathf.Abs(platform.y - plat.y));
+            }          
+        }
 
-                //    //}
-
-                //    if (good && awesome) break;
-                //}
+        for (int i = 0; i < doubleJumps.Count; i++)
+        {
+            DoubleJumpPlatform doubleJplatform = doubleJumps[i];
+            if (doubleJplatform.y > game.height)
+            {
+                doubleJumps.Remove(doubleJplatform);
+                RemoveChild(doubleJplatform);
             }
-            
         }
     }
 
     private void PlatformsSpawn()
     {
-        if (platforms.Count < platformAmount)
+        if (doubleJumps.Count < doublePlatformAmount)
         {
-            Platform platform = new Platform();
+            DoubleJumpPlatform platform = new DoubleJumpPlatform();
             while (true)
             {
 
@@ -87,20 +86,37 @@ public class Level : GameObject {
                 }
 
                 collisions = platform.GetCollisions();
-                if (collisions.Length <= 1) break;
-
-                //foreach (Platform p in platforms)
-                //{
-                //    if (platform.y + platform.height < p.y && platform.y > p.y + p.height) good = true;
-                //    else
-                //    {
-                //        good = false;
-                //        break;
-                //    }
-                //}
-                //if (good) break;
+                if (collisions.Length <= 1) break;          
             }
             
+            doubleJumps.Add(platform);
+            AddChild(platform);
+        }
+
+        if (platforms.Count < platformAmount)
+        {
+            Platform platform = new Platform();
+            while (true)
+            {
+
+                GameObject[] collisions = platform.GetCollisions();
+
+
+                for (int i = 0; i < collisions.Length; i++)
+                {
+                    if (collisions[i].GetType().Equals(typeof(Player)) && collisions.Length >= 1) continue;
+                    else
+                    {
+                        platform.y += platform.height;
+                        break;
+                    }
+                    // break;
+                }
+
+                collisions = platform.GetCollisions();
+                if (collisions.Length <= 1) break;
+            }
+
             platforms.Add(platform);
             AddChild(platform);
         }
@@ -109,7 +125,7 @@ public class Level : GameObject {
     void CreateLevel()
     {
         loader.autoInstance = true;
-        loader.AddManualType("Platform");
+        loader.AddManualType("Platform", "DoubleJumpPlatform");
         loader.OnObjectCreated += TiledLoader_OnObjectCreated;
         loader.LoadObjectGroups();
         loader.addColliders = true;
@@ -130,5 +146,14 @@ public class Level : GameObject {
             platforms.Add(platform);
             AddChild(platform);
         }
+
+        if (obj.Type == "DoubleJumpPlatform")
+        {
+            DoubleJumpPlatform platform = new DoubleJumpPlatform();
+            platform.SetXY(obj.X, obj.Y);
+            doubleJumps.Add(platform);
+            AddChild(platform);
+        }
+
     }
 }

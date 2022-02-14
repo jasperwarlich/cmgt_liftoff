@@ -9,7 +9,7 @@ using TiledMapParser;
 public class Player : AnimationSprite
 {
     private int speed = 5;
-    private float gravity = 0.9f;
+    private float gravity = 0.5f;
     private float ySpeed = 0;
     private float jumpSpeed = -25;
     private bool isJumping;
@@ -25,15 +25,18 @@ public class Player : AnimationSprite
     //private float highest;
     //private bool firstTime;
 
-    public Player(TiledObject obj = null) : base("barry.png",7, 1, -1, false, true)
+    public Player(TiledObject obj = null) : base("playerSpritesheet.png", 4, 4, -1, false, true)
     {
         // boundary = game.height / 2;
+        SetOrigin(width/2, height/2);
         score = 0;
         playerDead = false;
+        SetCycle(1,3);
     }
 
     void Update()
     {
+        Animate(.06f);
         Movement();
         PlayerJump();
         PlayerDead();
@@ -56,7 +59,7 @@ public class Player : AnimationSprite
     void PlayerJump()
     {
         ySpeed += gravity;
-
+        Console.WriteLine(isJumping);
         if (MoveUntilCollision(0, ySpeed) != null)
         {
             if (ySpeed > 0)
@@ -78,9 +81,14 @@ public class Player : AnimationSprite
                 ySpeed = jumpSpeed;
                 doubleJump = false;
             }
-        }   
-        if(isJumping)
+          
+        }
+        if (isJumping)
+        {
+            SetCycle(4, 3);
             score++;
+        }
+        else { SetCycle(1, 3); }
     }
 
     void PlayerDead() {
