@@ -9,7 +9,7 @@ public class DoubleJumpPowerUp : AnimationSprite
 {
 
 
-    public DoubleJumpPowerUp(TiledObject obj = null) : base ("leaf.png", 5, 1)
+    public DoubleJumpPowerUp(TiledObject obj = null) : base ("wings.png", 2, 1)
     {
         this.collider.isTrigger = true;
     }

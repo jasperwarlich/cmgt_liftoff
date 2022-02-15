@@ -9,7 +9,7 @@ using TiledMapParser;
 public class Wings : AnimationSprite
 {
 
-    public Wings(TiledObject obj = null) : base("wings.png", 2, 1)
+    public Wings(TiledObject obj = null) : base("leaf.png", 5, 1)
     {
         this.collider.isTrigger = true;
     }

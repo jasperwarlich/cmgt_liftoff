@@ -8,7 +8,7 @@ public class MyGame : Game
     string levelName = "map.tmx";
     string nextLevel = null;
     public Level level;
-
+    Player player;
     public MyGame() : base(1366, 768, false)        // Create a window that's 800x600 and NOT fullscreen
     {
         OnAfterStep += CheckLoadLevel;
@@ -20,15 +20,18 @@ public class MyGame : Game
 
         if (level != null)
         {
-
-            if (level.player.playerDead)
+            level.y += .08f;
+            if (level.player != null)
             {
-                DestroyLevel();
-                LoadLevel(levelName);
+                if (level.player.playerDead)
+                {
+                    DestroyLevel();
+                    LoadLevel(levelName);
+                }
             }
         }
     }
-    
+
     void CheckLoadLevel()
     {
         if (nextLevel != null)
@@ -52,6 +55,7 @@ public class MyGame : Game
     {
         nextLevel = filename;
     }
+            
     static void Main()                          // Main() is the first method that's called when the program is run
     {
         new MyGame().Start();                   // Create a "MyGame" and start it

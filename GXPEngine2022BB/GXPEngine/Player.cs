@@ -26,13 +26,20 @@ public class Player : AnimationSprite
     private float highest;
     private bool firstTime;
 
+    Sprite sensor;
+
     public Player(TiledObject obj = null) : base("playerSpritesheet.png", 4, 4, -1, false, true)
     {
         boundary = game.height / 2;
         SetOrigin(width/2, height/2);
+        this.SetScaleXY(.5f,.5f);
         score = 0;
         playerDead = false;
         isJumping = false;
+        sensor = new Sprite("circle.png");
+        AddChild(sensor);
+        sensor.SetXY((width/2) - 60, height);
+        sensor.alpha = 0.5f;
     }
 
     void Update()
@@ -42,6 +49,7 @@ public class Player : AnimationSprite
         PlayerJump();
         PlayerDead();
         Animations();
+        CheckPlatform();
        // CameraFollow();
         // if (this.y > game.y) { Console.WriteLine("aaaaaaaa"); }
     }
@@ -145,7 +153,8 @@ public class Player : AnimationSprite
         }
 
         if (other is Wings)
-        { 
+        {
+            score += 100;
             other.LateDestroy();
         }
     }
@@ -156,7 +165,15 @@ public class Player : AnimationSprite
         scaleX *= -1;
     }
 
-    
+    void CheckPlatform() {
+        foreach (GameObject other in sensor.GetCollisions())
+        {
+            if (other is FragilePlatform) {
+               FragilePlatform fragilePlatform = other as FragilePlatform;
+                fragilePlatform.Timer();
+            }
+        }
+    }
     /*void CameraFollow()
     {
         game.y = game.height - boundary - y;

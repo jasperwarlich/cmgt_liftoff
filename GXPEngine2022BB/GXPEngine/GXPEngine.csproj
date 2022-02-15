@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FragilePlatform.cs" />
     <Compile Include="Wings.cs" />
     <Compile Include="DoubleJumpPowerUp.cs" />
     <Compile Include="GXPEngine\AddOns\Gizmos.cs" />

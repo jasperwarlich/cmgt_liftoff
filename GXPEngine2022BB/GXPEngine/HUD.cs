@@ -33,9 +33,11 @@ public class HUD : GameObject
     public void ChechScore()
     {
         score.Clear(Color.Transparent);
+
         score.Text(String.Format("Score: " + (int)player.score));
 
         doubleJump.Clear(Color.Transparent);
         doubleJump.Text(String.Format("Double Jump: " + player.doubleJump));
+
     }
 }

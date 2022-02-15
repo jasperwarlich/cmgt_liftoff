@@ -21,6 +21,12 @@ public class Level : GameObject {
         //SetXY(0, -150);
         loader = new TiledLoader(filename);
 
+        /*
+        player = new Player();
+        AddChild(player);
+        player.SetXY(200, 200);
+        */
+
         platforms = new List<Platform>();
         doubleJumps = new List<DoubleJumpPowerUp>();
         CreateLevel();
@@ -31,16 +37,12 @@ public class Level : GameObject {
 
     void Update()
     {
-        //this.y += .11f;
-        foreach (Platform p in platforms)
-        {
-            p.Update();
-        }
         hud.ChechScore();
-        PlatformsCheck();
-        PlatformsSpawn();
+        //PlatformsCheck();
+        //PlatformsSpawn();
     }
 
+    /*
     private void PlatformsCheck()
     {
         for (int i = 0; i < platforms.Count; i++)
@@ -96,7 +98,7 @@ public class Level : GameObject {
 
         if (platforms.Count < platformAmount)
         {
-            Platform platform = new Platform();
+            Platform platform = new Platform("leaf_platform_80.png");
             while (true)
             {
 
@@ -121,12 +123,13 @@ public class Level : GameObject {
             platforms.Add(platform);
             AddChild(platform);
         }
-    }
+    }*/
 
     void CreateLevel()
     {
+        loader.rootObject = this;
         loader.autoInstance = true;
-        loader.AddManualType("Platform", "DoubleJumpPlatform");
+        loader.AddManualType("Platform", "DoubleJumpPlatform", "Player");
         loader.OnObjectCreated += TiledLoader_OnObjectCreated;
         loader.LoadObjectGroups();
         loader.addColliders = true;
@@ -142,7 +145,7 @@ public class Level : GameObject {
     private void TiledLoader_OnObjectCreated(Sprite sprite, TiledObject obj)
     {
         if (obj.Type == "Platform") { 
-            Platform platform = new Platform();
+            Platform platform = new Platform("leaf_platform_80.png");
             platform.SetXY(obj.X, obj.Y);
             platforms.Add(platform);
             AddChild(platform);
@@ -155,6 +158,11 @@ public class Level : GameObject {
             doubleJumps.Add(platform);
             AddChild(platform);
         }
-
+       if (obj.Type == "Player")
+        {
+            Player player = new Player();
+            player.SetXY(obj.X, obj.Y);
+            game.AddChild(player);
+        }
     }
 }

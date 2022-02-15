@@ -8,13 +8,12 @@ using TiledMapParser;
 
 public class Platform : Sprite
 {
-   private int movingSpeed = 0;
+    private int movingSpeed = 0;
 
 
-    public Platform(TiledObject obj = null) : base("leaf_platform_80.png")
+    public Platform(String image, TiledObject obj = null) : base(image)
     {
         SetXY(Utils.Random(width, game.width - width), Utils.Random(-80, -50));
-        this.collider.isTrigger = false;
         movingSpeed = 0;
         Console.WriteLine(height);
     }
@@ -27,6 +26,7 @@ public class Platform : Sprite
             this.collider.isTrigger = true;
         }
         else { this.collider.isTrigger = false; }
+
         IncreaseDifficulty();
     }
 
