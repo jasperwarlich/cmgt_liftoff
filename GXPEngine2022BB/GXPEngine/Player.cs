@@ -8,12 +8,13 @@ using TiledMapParser;
 
 public class Player : AnimationSprite
 {
-    private int speed = 5;
-    private float gravity = 0.5f;
+    private int speed = 3;
+    private float gravity = 0.9f;
     private float ySpeed = 0;
     private float jumpSpeed = -25;
     private bool isJumping;
-
+    private bool isMoving;
+    private bool isFacingRight;
 
     public bool doubleJump { get; private set; }
 
@@ -21,17 +22,17 @@ public class Player : AnimationSprite
 
     public bool playerDead { get; private set; }
 
-    //private int boundary;
-    //private float highest;
-    //private bool firstTime;
+    private int boundary;
+    private float highest;
+    private bool firstTime;
 
     public Player(TiledObject obj = null) : base("playerSpritesheet.png", 4, 4, -1, false, true)
     {
-        // boundary = game.height / 2;
+        boundary = game.height / 2;
         SetOrigin(width/2, height/2);
         score = 0;
         playerDead = false;
-        SetCycle(1,3);
+        isJumping = false;
     }
 
     void Update()
@@ -40,16 +41,54 @@ public class Player : AnimationSprite
         Movement();
         PlayerJump();
         PlayerDead();
-        // CameraFollow();
+        Animations();
+       // CameraFollow();
         // if (this.y > game.y) { Console.WriteLine("aaaaaaaa"); }
+    }
+    private void Animations()
+    {
+        //Moving animation
+        if (!isMoving)
+        {
+            //Idle animation
+            SetCycle(1, 3);
+            Animate(0.02f);
+        }
+        else
+        {
+            //Walking animation
+            SetCycle(7, 8);
+            Animate(0.02f);
+        }
+        //Jumping animation
+        if (isJumping)
+        {
+            SetCycle(4, 3);
+            Animate(0.02f);
+        }
     }
 
     void Movement()
     {
         int xSpeed = 0;
 
-        if (Input.GetKey(Key.D)) xSpeed = speed;
-        if (Input.GetKey(Key.A)) xSpeed = -speed;
+        if (Input.GetKey(Key.D)) {
+            xSpeed = speed;
+            isMoving = true;
+            if (!isFacingRight)
+            {
+                Flip();
+            }
+        }
+        else if (Input.GetKey(Key.A)) { 
+            xSpeed = -speed; 
+            isMoving = true;
+            if (isFacingRight)
+            {
+                Flip();
+            }
+        }
+        else { isMoving = false; }
 
 
         Move(xSpeed, 0);
@@ -59,7 +98,6 @@ public class Player : AnimationSprite
     void PlayerJump()
     {
         ySpeed += gravity;
-        Console.WriteLine(isJumping);
         if (MoveUntilCollision(0, ySpeed) != null)
         {
             if (ySpeed > 0)
@@ -68,6 +106,7 @@ public class Player : AnimationSprite
             }
             ySpeed = 0;
         }
+        else { isJumping = true; }
 
         if (Input.GetKeyDown(Key.SPACE))
         {
@@ -85,10 +124,9 @@ public class Player : AnimationSprite
         }
         if (isJumping)
         {
-            SetCycle(4, 3);
             score++;
+            isMoving = false;
         }
-        else { SetCycle(1, 3); }
     }
 
     void PlayerDead() {
@@ -100,16 +138,28 @@ public class Player : AnimationSprite
 
     void OnCollision(GameObject other)
     {
-        if (other is DoubleJumpPlatform)
+        if (other is DoubleJumpPowerUp)
         {
             doubleJump = true;
+            other.LateDestroy();
         }
-        else { doubleJump = false; }
+
+        if (other is Wings)
+        { 
+            other.LateDestroy();
+        }
     }
 
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        scaleX *= -1;
+    }
+
+    
     /*void CameraFollow()
     {
-        parent.y = game.height - boundary - y;
+        game.y = game.height - boundary - y;
         if (!firstTime)
         {
             firstTime = true;

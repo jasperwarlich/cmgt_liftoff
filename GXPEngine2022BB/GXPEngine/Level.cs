@@ -11,7 +11,7 @@ public class Level : GameObject {
     HUD hud;
 
     List<Platform> platforms;
-    List<DoubleJumpPlatform> doubleJumps;
+    List<DoubleJumpPowerUp> doubleJumps;
     private int platformAmount;
     private int doublePlatformAmount;
 
@@ -22,7 +22,7 @@ public class Level : GameObject {
         loader = new TiledLoader(filename);
 
         platforms = new List<Platform>();
-        doubleJumps = new List<DoubleJumpPlatform>();
+        doubleJumps = new List<DoubleJumpPowerUp>();
         CreateLevel();
         platformAmount = platforms.Count;
         doublePlatformAmount = doubleJumps.Count;
@@ -31,6 +31,7 @@ public class Level : GameObject {
 
     void Update()
     {
+        //this.y += .11f;
         foreach (Platform p in platforms)
         {
             p.Update();
@@ -54,7 +55,7 @@ public class Level : GameObject {
 
         for (int i = 0; i < doubleJumps.Count; i++)
         {
-            DoubleJumpPlatform doubleJplatform = doubleJumps[i];
+            DoubleJumpPowerUp doubleJplatform = doubleJumps[i];
             if (doubleJplatform.y > game.height)
             {
                 doubleJumps.Remove(doubleJplatform);
@@ -67,7 +68,7 @@ public class Level : GameObject {
     {
         if (doubleJumps.Count < doublePlatformAmount)
         {
-            DoubleJumpPlatform platform = new DoubleJumpPlatform();
+            DoubleJumpPowerUp platform = new DoubleJumpPowerUp();
             while (true)
             {
 
@@ -132,7 +133,7 @@ public class Level : GameObject {
         loader.LoadTileLayers(0);
         loader.addColliders = false;
         loader.LoadTileLayers(1);
-       
+
         player = game.FindObjectOfType<Player>();
         hud = new HUD(player);
         game.AddChild(hud);
@@ -149,7 +150,7 @@ public class Level : GameObject {
 
         if (obj.Type == "DoubleJumpPlatform")
         {
-            DoubleJumpPlatform platform = new DoubleJumpPlatform();
+            DoubleJumpPowerUp platform = new DoubleJumpPowerUp();
             platform.SetXY(obj.X, obj.Y);
             doubleJumps.Add(platform);
             AddChild(platform);

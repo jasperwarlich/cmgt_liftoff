@@ -17,8 +17,10 @@ public class MyGame : Game
 
     void Update()
     {
+
         if (level != null)
         {
+
             if (level.player.playerDead)
             {
                 DestroyLevel();

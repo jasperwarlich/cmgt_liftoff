@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="43" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="42">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="43" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="47">
  <tileset firstgid="1" name="[32x32] Rocky Grass" tilewidth="32" tileheight="32" tilecount="56" columns="8">
   <image source="D:/GXPEngine2022BB/GXPEngine/bin/Debug/[32x32] Rocky Grass.png" width="256" height="224"/>
  </tileset>
@@ -32,15 +32,19 @@
 </data>
  </layer>
  <objectgroup id="5" name="Platform">
-  <object id="20" name="Platform" type="Platform" x="683.636" y="617.892" width="234" height="53.33"/>
+  <object id="20" name="Platform" type="Platform" x="683.636" y="617.892" width="234" height="122.33"/>
   <object id="35" name="Platform" type="Platform" x="232" y="534" width="234" height="53.33"/>
   <object id="37" name="Platform" type="Platform" x="606" y="294" width="234" height="53.33"/>
   <object id="38" name="Platform" type="Platform" x="962" y="386" width="234" height="53.33"/>
   <object id="40" name="Platform" type="Platform" x="992" y="160" width="234" height="53.33"/>
   <object id="39" name="Platform" type="Platform" x="192" y="96" width="234" height="53.33"/>
-  <object id="41" name="DoubleJumpPlatform" type="DoubleJumpPlatform" x="188" y="364" width="288" height="52"/>
+  <object id="43" name="Platform" type="Platform" x="85" y="367.335" width="148" height="53.33"/>
  </objectgroup>
  <objectgroup id="2" name="Player">
-  <object id="1" name="Player" type="Player" x="738" y="542" width="76.9925" height="67.6592"/>
+  <object id="1" name="Player" type="Player" x="738" y="540.667" width="76.9925" height="68.9925"/>
+ </objectgroup>
+ <objectgroup id="9" name="Collectables">
+  <object id="44" name="Collectables" type="DoubleJumpPlatform" x="660.667" y="175.667" width="102.333" height="107.667"/>
+  <object id="45" name="Wings" type="Wings" x="309" y="432" width="107" height="98"/>
  </objectgroup>
 </map>
