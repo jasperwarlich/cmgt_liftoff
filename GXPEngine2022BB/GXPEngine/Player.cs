@@ -145,7 +145,8 @@ public class Player : AnimationSprite
         }
 
         if (other is Wings)
-        { 
+        {
+            score += 100;
             other.LateDestroy();
         }
     }
