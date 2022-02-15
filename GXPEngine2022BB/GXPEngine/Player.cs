@@ -26,7 +26,7 @@ public class Player : AnimationSprite
     private float highest;
     private bool firstTime;
 
-    Sprite sensor;
+    public Sprite sensor;
 
     public Player(TiledObject obj = null) : base("playerSpritesheet.png", 4, 4, -1, false, true)
     {
@@ -49,8 +49,9 @@ public class Player : AnimationSprite
         PlayerJump();
         PlayerDead();
         Animations();
-        CheckPlatform();
-       // CameraFollow();
+        CheckPlatform(); 
+        
+        // CameraFollow();
         // if (this.y > game.y) { Console.WriteLine("aaaaaaaa"); }
     }
     private void Animations()
@@ -99,8 +100,8 @@ public class Player : AnimationSprite
         else { isMoving = false; }
 
 
-        Move(xSpeed, 0);
-        //MoveUntilCollision(xSpeed, 0);
+        //Move(xSpeed, 0);
+        MoveUntilCollision(xSpeed, 0);
     }
 
     void PlayerJump()
@@ -152,7 +153,7 @@ public class Player : AnimationSprite
             other.LateDestroy();
         }
 
-        if (other is Wings)
+        if (other is Leaf)
         {
             score += 100;
             other.LateDestroy();
@@ -168,9 +169,12 @@ public class Player : AnimationSprite
     void CheckPlatform() {
         foreach (GameObject other in sensor.GetCollisions())
         {
-            if (other is FragilePlatform) {
-               FragilePlatform fragilePlatform = other as FragilePlatform;
+            if (other is FragilePlatform)
+            {
+                FragilePlatform fragilePlatform = other as FragilePlatform;
+                fragilePlatform.detect = true;
                 fragilePlatform.Timer();
+                
             }
         }
     }

@@ -8,19 +8,19 @@ public class MyGame : Game
     string levelName = "map.tmx";
     string nextLevel = null;
     public Level level;
-    Player player;
+   
     public MyGame() : base(1366, 768, false)        // Create a window that's 800x600 and NOT fullscreen
     {
         OnAfterStep += CheckLoadLevel;
         LoadLevel(levelName);
+
     }
 
     void Update()
     {
-
         if (level != null)
         {
-            level.y += .08f;
+            level.y += .5f;
             if (level.player != null)
             {
                 if (level.player.playerDead)

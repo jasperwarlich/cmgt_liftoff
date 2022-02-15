@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using GXPEngine;
 using TiledMapParser;
 
-public class Wings : AnimationSprite
+public class Leaf : AnimationSprite
 {
 
-    public Wings(TiledObject obj = null) : base("leaf.png", 5, 1)
+    public Leaf(TiledObject obj = null) : base("leaf.png", 5, 1)
     {
         this.collider.isTrigger = true;
+        SetScaleXY(.5f,.5f);
     }
 
     void Update() {

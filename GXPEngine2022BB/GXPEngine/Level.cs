@@ -3,7 +3,8 @@ using System;
 using TiledMapParser;
 using System.Collections.Generic;
 
-public class Level : GameObject {
+public class Level : GameObject
+{
     private TiledLoader loader;
 
     public Player player { get; private set; }
@@ -18,21 +19,12 @@ public class Level : GameObject {
 
     public Level(string filename)
     {
-        //SetXY(0, -150);
         loader = new TiledLoader(filename);
-
-        /*
-        player = new Player();
-        AddChild(player);
-        player.SetXY(200, 200);
-        */
-
         platforms = new List<Platform>();
         doubleJumps = new List<DoubleJumpPowerUp>();
         CreateLevel();
         platformAmount = platforms.Count;
         doublePlatformAmount = doubleJumps.Count;
-        //PlatformsSpawn();
     }
 
     void Update()
@@ -127,9 +119,9 @@ public class Level : GameObject {
 
     void CreateLevel()
     {
-        loader.rootObject = this;
-        loader.autoInstance = true;
-        loader.AddManualType("Platform", "DoubleJumpPlatform", "Player");
+        //loader.rootObject = this;
+        //loader.autoInstance = true;
+        loader.AddManualType("Platform", "FragilePlatform", "Player", "Wings", "DoubleJump");
         loader.OnObjectCreated += TiledLoader_OnObjectCreated;
         loader.LoadObjectGroups();
         loader.addColliders = true;
@@ -144,21 +136,36 @@ public class Level : GameObject {
 
     private void TiledLoader_OnObjectCreated(Sprite sprite, TiledObject obj)
     {
-        if (obj.Type == "Platform") { 
+        if (obj.Type == "Platform")
+        {
             Platform platform = new Platform("leaf_platform_80.png");
             platform.SetXY(obj.X, obj.Y);
             platforms.Add(platform);
             AddChild(platform);
         }
 
-        if (obj.Type == "DoubleJumpPlatform")
+        if (obj.Type == "FragilePlatform")
         {
-            DoubleJumpPowerUp platform = new DoubleJumpPowerUp();
-            platform.SetXY(obj.X, obj.Y);
-            doubleJumps.Add(platform);
+            Platform platform = new Platform("circle.png");
+            platform.SetXY(obj.X, obj.Y);      
             AddChild(platform);
         }
-       if (obj.Type == "Player")
+
+        if (obj.Type == "Leaf")
+        {
+            Leaf wings = new Leaf();
+            wings.SetXY(obj.X, obj.Y);
+            AddChild(wings);
+        }
+
+        if (obj.Type == "DoubleJumpPowerUp")
+        {
+            DoubleJumpPowerUp doubleJump = new DoubleJumpPowerUp();
+            doubleJump.SetXY(obj.X, obj.Y);
+            AddChild(doubleJump);
+        }
+
+        if (obj.Type == "Player")
         {
             Player player = new Player();
             player.SetXY(obj.X, obj.Y);

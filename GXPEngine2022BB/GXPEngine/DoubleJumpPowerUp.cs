@@ -8,10 +8,10 @@ using TiledMapParser;
 public class DoubleJumpPowerUp : AnimationSprite
 {
 
-
     public DoubleJumpPowerUp(TiledObject obj = null) : base ("wings.png", 2, 1)
     {
-        this.collider.isTrigger = true;
+        this.collider.isTrigger = true; 
+        SetScaleXY(.5f, .5f);
     }
 
     public void Update()

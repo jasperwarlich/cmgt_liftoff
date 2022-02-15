@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FragilePlatform.cs" />
-    <Compile Include="Wings.cs" />
+    <Compile Include="LeafPoints.cs" />
     <Compile Include="DoubleJumpPowerUp.cs" />
     <Compile Include="GXPEngine\AddOns\Gizmos.cs" />
     <Compile Include="GXPEngine\AddOns\SpriteBatch.cs" />

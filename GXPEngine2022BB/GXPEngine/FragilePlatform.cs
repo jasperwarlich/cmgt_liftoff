@@ -8,20 +8,27 @@ using TiledMapParser;
 
 public class FragilePlatform : Platform
 {
-    int timer = 0;
+    int timer = 1000;
 
-
+    public bool detect;
     public FragilePlatform(TiledObject obj = null) : base("circle.png")
     {
-
+        detect = false;
     }
+
+    //void Update() { base.Update(); }
+
     public void Timer()
     {
-        timer = Time.time / 1000;
-        if (timer >= 2)
-        {
-            this.LateDestroy();
-            timer = 0;
+        timer -= Time.time / 1000;
+        
+        if (detect) {
+           
+            if (timer <= 0)
+            {
+                this.LateDestroy();
+                timer = 1000;
+            }
         }
     }
 }
