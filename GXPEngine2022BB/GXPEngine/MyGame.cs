@@ -8,7 +8,7 @@ public class MyGame : Game
     public string levelName = "mainmenu.tmx";
     string nextLevel = null;
     public Level level;
-
+    public Camera cam;
 
 
     Sound menuBackgroundMusic;
@@ -19,6 +19,8 @@ public class MyGame : Game
         LoadLevel(levelName);
         menuBackgroundMusic = new Sound("menuMusic.mp3", true, true);
         musicChannel = menuBackgroundMusic.Play(false, 0, .5f, 0);
+        
+        cam = new Camera(-1150,0, 2500, 768);
         
     
 
@@ -34,7 +36,9 @@ public class MyGame : Game
             if (levelName != "mainmenu.tmx")
             {
                 //level.y += .5f;
-                
+                level.AddChild(cam);
+                cam.y -= 1;
+                Console.WriteLine(cam.y);
             }
             if (level.player != null)
             {

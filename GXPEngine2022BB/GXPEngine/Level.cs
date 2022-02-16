@@ -184,5 +184,9 @@ public class Level : GameObject
             button.SetXY(obj.X, obj.Y);
             AddChild(button);
         }
+       
+
+
+
     }
 }
