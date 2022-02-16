@@ -9,6 +9,8 @@ public class MyGame : Game
     string nextLevel = null;
     public Level level;
 
+
+
     Sound menuBackgroundMusic;
     SoundChannel musicChannel;
     public MyGame() : base(1366, 768, false)        // Create a window that's 800x600 and NOT fullscreen
@@ -17,18 +19,22 @@ public class MyGame : Game
         LoadLevel(levelName);
         menuBackgroundMusic = new Sound("menuMusic.mp3", true, true);
         musicChannel = menuBackgroundMusic.Play(false, 0, .5f, 0);
+        
+    
 
     }
 
     void Update()
     {
-        Console.WriteLine(levelName);
+        
+        
         if (level != null)
         {
             
             if (levelName != "mainmenu.tmx")
             {
-                level.y += .5f;
+                //level.y += .5f;
+                
             }
             if (level.player != null)
             {
@@ -49,11 +55,12 @@ public class MyGame : Game
             level = new Level(nextLevel);
             AddChild(level);
             
+            
             nextLevel = null;            
         }
     }
 
-    void DestroyLevel()
+     public void DestroyLevel()
     {
         List<GameObject> children = GetChildren();
         foreach (GameObject child in children)

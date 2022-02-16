@@ -8,7 +8,7 @@ using TiledMapParser;
 
 public class Player : AnimationSprite
 {
-    private int speed = 3;
+    private int speed = 5;
     private float gravity = 0.9f;
     private float ySpeed = 0;
     private float jumpSpeed = -25;
@@ -55,8 +55,8 @@ public class Player : AnimationSprite
         PlayerJump();
         PlayerDead();
         Animations();
-        CheckPlatform(); 
-        
+        CheckPlatform();
+
         // CameraFollow();
         // if (this.y > game.y) { Console.WriteLine("aaaaaaaa"); }
     }
@@ -176,15 +176,22 @@ public class Player : AnimationSprite
         scaleX *= -1;
     }
 
-    void CheckPlatform() {
+    void CheckPlatform()
+    {
         foreach (GameObject other in sensor.GetCollisions())
         {
+
+            if(other is Platform) {
+                
+            }
             if (other is FragilePlatform)
             {
+                
                 FragilePlatform fragilePlatform = other as FragilePlatform;
+                
                 fragilePlatform.detect = true;
                 fragilePlatform.Timer();
-                
+
             }
         }
     }

@@ -22,6 +22,7 @@ public class Button : Sprite
             if (Input.GetMouseButtonDown(0))
             {
                 ((MyGame)game).levelName = "map.tmx";
+                ((MyGame)game).DestroyLevel();
                 ((MyGame)game).LoadLevel(((MyGame)game).levelName);
             }
         }

@@ -14,3 +14,11 @@ C:\Users\jaspe\Documents\Saxion\CMGT\2021-2022\Trimester 3\1.3 Project Lift Off\
 C:\Users\jaspe\Documents\Saxion\CMGT\2021-2022\Trimester 3\1.3 Project Lift Off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
 C:\Users\jaspe\Documents\Saxion\CMGT\2021-2022\Trimester 3\1.3 Project Lift Off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.exe
 C:\Users\jaspe\Documents\Saxion\CMGT\2021-2022\Trimester 3\1.3 Project Lift Off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.pdb
+C:\Users\jaspe\Documents\Project Lift off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\bin\Debug\GXPEngine.exe.config
+C:\Users\jaspe\Documents\Project Lift off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\bin\Debug\GXPEngine.exe
+C:\Users\jaspe\Documents\Project Lift off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\bin\Debug\GXPEngine.pdb
+C:\Users\jaspe\Documents\Project Lift off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.csproj.AssemblyReference.cache
+C:\Users\jaspe\Documents\Project Lift off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.csproj.SuggestedBindingRedirects.cache
+C:\Users\jaspe\Documents\Project Lift off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
+C:\Users\jaspe\Documents\Project Lift off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.exe
+C:\Users\jaspe\Documents\Project Lift off\cmgt_liftoff\GXPEngine2022BB\GXPEngine\obj\x86\Debug\GXPEngine.pdb

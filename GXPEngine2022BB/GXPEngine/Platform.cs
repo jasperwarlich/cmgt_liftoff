@@ -16,11 +16,15 @@ public class Platform : Sprite
 
     public void Update()
     {
-       /*if (((MyGame)game).level.player.y > y)
+        if (((MyGame)game).level.player.y > y)
         {
             this.collider.isTrigger = true;
         }
         else { this.collider.isTrigger = false; }
-        */
+
+
+
     }
+
+    
 }

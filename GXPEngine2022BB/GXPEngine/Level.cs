@@ -22,14 +22,18 @@ public class Level : GameObject
         loader = new TiledLoader(filename);
         platforms = new List<Platform>();
         doubleJumps = new List<DoubleJumpPowerUp>();
+        
         CreateLevel();
 
         platformAmount = platforms.Count;
         doublePlatformAmount = doubleJumps.Count;
+        
+        
     }
 
     void Update()
     {
+       
         hud.ChechScore();
         //PlatformsCheck();
         //PlatformsSpawn();
@@ -133,6 +137,7 @@ public class Level : GameObject
         player = game.FindObjectOfType<Player>();
         hud = new HUD(player);
         game.AddChild(hud);
+        
     }
 
     private void TiledLoader_OnObjectCreated(Sprite sprite, TiledObject obj)
@@ -147,9 +152,9 @@ public class Level : GameObject
 
         if (obj.Type == "FragilePlatform")
         {
-            Platform platform = new Platform("leaf_platform_80.png");
-            platform.SetXY(obj.X, obj.Y);      
-            AddChild(platform);
+            FragilePlatform fragilePlatform = new FragilePlatform();
+            fragilePlatform.SetXY(obj.X, obj.Y);      
+            AddChild(fragilePlatform);
         }
 
         if (obj.Type == "Leaf")
