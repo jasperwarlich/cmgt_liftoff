@@ -11,7 +11,7 @@ public class FragilePlatform : Platform
     int timer = 1000;
 
     public bool detect;
-    public FragilePlatform(TiledObject obj = null) : base("circle.png")
+    public FragilePlatform(TiledObject obj = null) : base("leaf_platform_80.png")
     {
         detect = false;
     }

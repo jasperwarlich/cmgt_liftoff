@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="43" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="151">
- <tileset firstgid="1" name="[32x32] Rocky Grass" tilewidth="32" tileheight="32" tilecount="56" columns="8">
+ <tileset firstgid="1" name="[32x32] Rocky Grass" tilewidth="32" tileheight="32" tilecount="0" columns="8">
   <image source="D:/GXPEngine2022BB/GXPEngine/bin/Debug/[32x32] Rocky Grass.png" width="256" height="224"/>
  </tileset>
  <layer id="3" name="Background" width="43" height="24">
@@ -32,7 +32,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="Player">
-  <object id="1" name="Player" type="Player" x="842.333" y="501.819" width="76.9925" height="68.9925"/>
+  <object id="1" name="Player" type="Player" x="938.333" y="504.486" width="76.9925" height="68.9925"/>
  </objectgroup>
  <objectgroup id="5" name="Platform">
   <object id="47" name="Platform" type="Platform" x="416" y="576" width="212.121" height="45.4545"/>

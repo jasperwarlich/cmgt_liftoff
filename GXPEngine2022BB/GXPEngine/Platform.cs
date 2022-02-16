@@ -8,12 +8,10 @@ using TiledMapParser;
 
 public class Platform : Sprite
 {
-    
-
 
     public Platform(String image, TiledObject obj = null) : base(image)
     {
-       
+
     }
 
     public void Update()

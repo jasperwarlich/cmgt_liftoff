@@ -23,6 +23,7 @@ public class Level : GameObject
         platforms = new List<Platform>();
         doubleJumps = new List<DoubleJumpPowerUp>();
         CreateLevel();
+
         platformAmount = platforms.Count;
         doublePlatformAmount = doubleJumps.Count;
     }
@@ -121,7 +122,7 @@ public class Level : GameObject
     {
         //loader.rootObject = this;
         //loader.autoInstance = true;
-        loader.AddManualType("Platform", "FragilePlatform", "Player", "Wings", "DoubleJump");
+        loader.AddManualType("Platform", "FragilePlatform", "Player", "Wings", "DoubleJump", "Button");
         loader.OnObjectCreated += TiledLoader_OnObjectCreated;
         loader.LoadObjectGroups();
         loader.addColliders = true;
@@ -138,7 +139,7 @@ public class Level : GameObject
     {
         if (obj.Type == "Platform")
         {
-            Platform platform = new Platform("leaf_platform_80.png");
+            Platform platform = new Platform("solidTile.png");
             platform.SetXY(obj.X, obj.Y);
             platforms.Add(platform);
             AddChild(platform);
@@ -146,7 +147,7 @@ public class Level : GameObject
 
         if (obj.Type == "FragilePlatform")
         {
-            Platform platform = new Platform("circle.png");
+            Platform platform = new Platform("leaf_platform_80.png");
             platform.SetXY(obj.X, obj.Y);      
             AddChild(platform);
         }
@@ -170,6 +171,13 @@ public class Level : GameObject
             Player player = new Player();
             player.SetXY(obj.X, obj.Y);
             game.AddChild(player);
+        }
+        
+        if (obj.Type == "Button")
+        {
+            Button button = new Button();
+            button.SetXY(obj.X, obj.Y);
+            AddChild(button);
         }
     }
 }

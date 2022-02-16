@@ -28,8 +28,14 @@ public class Player : AnimationSprite
 
     public Sprite sensor;
 
+    Sound jumpSound;
+    Sound pickSound;
+
     public Player(TiledObject obj = null) : base("playerSpritesheet.png", 4, 4, -1, false, true)
     {
+        jumpSound = new Sound("jumpSound.mp3");
+        pickSound = new Sound("pickSound.mp3");
+
         boundary = game.height / 2;
         SetOrigin(width/2, height/2);
         this.SetScaleXY(.5f,.5f);
@@ -123,11 +129,13 @@ public class Player : AnimationSprite
             {
                 ySpeed = jumpSpeed;
                 isJumping = true;
+                jumpSound.Play(false, 0, 10, 0);
             }
             else if (doubleJump)
             {
                 ySpeed = jumpSpeed;
                 doubleJump = false;
+                jumpSound.Play(false, 0, 10, 0);
             }
           
         }
@@ -151,12 +159,14 @@ public class Player : AnimationSprite
         {
             doubleJump = true;
             other.LateDestroy();
+            pickSound.Play(false, 0, 10, 0);
         }
 
         if (other is Leaf)
         {
             score += 100;
             other.LateDestroy();
+            pickSound.Play(false, 0, 10, 0);
         }
     }
 
