@@ -44,6 +44,21 @@ public class MyGame : Game
                 }
             }
         }
+
+        ScrollingSpeed();
+    }
+
+    void ScrollingSpeed() {
+
+        if (Settings.score >= 500 && Settings.score <= 1000)
+        {
+            scrollingSpeed = 1f;
+        }
+        else if (Settings.score >= 1000 && Settings.score <= 1500)
+        {
+            scrollingSpeed = 1.5f;
+        }
+        else if (Settings.score >= 1500) { scrollingSpeed = 2f; }
     }
 
     void CheckLoadLevel()
