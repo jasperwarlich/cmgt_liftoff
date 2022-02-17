@@ -17,11 +17,11 @@ public class MyGame : Game
     Sound menuBackgroundMusic;
     SoundChannel musicChannel;
 
-    public MyGame() : base(1366, 768, false)        // Create a window that's 800x600 and NOT fullscreen
+    public MyGame() : base(1366, 768, true)        // Create a window that's 800x600 and NOT fullscreen
     {
         OnAfterStep += CheckLoadLevel;
         LoadLevel(levelName);
-        menuBackgroundMusic = new Sound("Sounds/menuMusic.mp3", true, true);
+        menuBackgroundMusic = new Sound("Sounds/backgroundMusic.wav", true, true);
         musicChannel = menuBackgroundMusic.Play(false, 0, .5f, 0);
     }
 

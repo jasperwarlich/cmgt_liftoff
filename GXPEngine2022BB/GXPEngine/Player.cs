@@ -51,7 +51,7 @@ public class Player : AnimationSprite
         sensor = new Sprite("circle.png");
         AddChild(sensor);
         sensor.SetXY((width / 2) - 60, height + 50);
-        sensor.alpha = 1;
+        sensor.alpha = 0;
 
         sensorHead = new Sprite("circle.png");
         AddChild(sensorHead);
