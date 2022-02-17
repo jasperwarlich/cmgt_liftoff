@@ -40,7 +40,7 @@ public class MyGame : Game
                 }
             }
             if (levelName == "mainmenu.tmx") {
-                Settings.score = 0;
+                //Settings.score = 0;
             }
         }
     }

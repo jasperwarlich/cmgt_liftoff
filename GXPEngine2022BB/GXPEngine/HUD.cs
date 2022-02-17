@@ -21,7 +21,7 @@ public class HUD : GameObject
     {
         this.player = player;
 
-        score = new EasyDraw(250, 60, false);
+        score = new EasyDraw(400, 60, false);
         score.Fill(Color.Blue);
         score.TextFont(font);
         score.SetXY(30, 0);
@@ -50,6 +50,11 @@ public class HUD : GameObject
         {
             score.SetXY((game.width / 2) - 100, (game.height / 2) - 40);
             score.Text(String.Format("Score: " + Settings.score));
+        }
+        if (((MyGame)game).levelName == "mainmenu.tmx")
+        {
+            score.SetXY((game.width / 2) - 150, (game.height / 2) + 70);
+            score.Text(String.Format("Last Score: " + Settings.score));
         }
     }
 }

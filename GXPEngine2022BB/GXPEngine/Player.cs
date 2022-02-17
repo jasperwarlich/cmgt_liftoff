@@ -56,6 +56,8 @@ public class Player : AnimationSprite
         sensorHead.SetXY((width / 2) - 60, -170);
         sensorHead.alpha = 0;
         sensorHead.collider.isTrigger = true;
+
+        Settings.score = 0;
     }
 
     void Update()
