@@ -48,12 +48,12 @@ public class Player : AnimationSprite
 
         sensor = new Sprite("circle.png");
         AddChild(sensor);
-        sensor.SetXY((width / 2) - 60, height);
+        sensor.SetXY((width / 2) - 60, height + 50);
         sensor.alpha = 0;
 
         sensorHead = new Sprite("circle.png");
         AddChild(sensorHead);
-        sensorHead.SetXY((width / 2) - 60, -170);
+        sensorHead.SetXY((width / 2) - 60, -200);
         sensorHead.alpha = 0;
         sensorHead.collider.isTrigger = true;
 
@@ -118,10 +118,9 @@ public class Player : AnimationSprite
             }
         }
         else { isMoving = false; }
-
-
+        Translate(xSpeed, 0);
         //Move(xSpeed, 0);
-        MoveUntilCollision(xSpeed, 0);
+        //MoveUntilCollision(xSpeed, 0);
     }
 
     void PlayerJump()
@@ -201,6 +200,7 @@ public class Player : AnimationSprite
             {
                 other.collider.isTrigger = false;
             }
+            else { other.collider.isTrigger = true; }
 
 
             if (other is FragilePlatform)

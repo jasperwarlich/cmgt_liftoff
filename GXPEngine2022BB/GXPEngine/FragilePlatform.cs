@@ -16,10 +16,6 @@ public class FragilePlatform : Platform
     {
         detect = false;
     }
-    void Update() {
-        Console.WriteLine(timer);
-
-    }
     public void Timer()
     {
         timer -= Time.time / 1000;

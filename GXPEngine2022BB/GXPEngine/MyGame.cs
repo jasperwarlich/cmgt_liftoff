@@ -11,6 +11,9 @@ public class MyGame : Game
 
     string nextLevel = null;
 
+    float scrollingSpeed = 0.5f;
+
+    int bla = 200;
     Sound menuBackgroundMusic;
     SoundChannel musicChannel;
 
@@ -19,16 +22,16 @@ public class MyGame : Game
         OnAfterStep += CheckLoadLevel;
         LoadLevel(levelName);
         menuBackgroundMusic = new Sound("Sounds/menuMusic.mp3", true, true);
-       // musicChannel = menuBackgroundMusic.Play(false, 0, .5f, 0);
+        // musicChannel = menuBackgroundMusic.Play(false, 0, .5f, 0);
     }
 
     void Update()
     {
         if (level != null)
-        {  
+        {
             if (levelName == "map.tmx")
             {
-                level.y += .5f;
+                level.y += scrollingSpeed;
             }
             if (level.player != null)
             {
@@ -37,11 +40,8 @@ public class MyGame : Game
                     Console.WriteLine("aaaaaaaa");
                     DestroyLevel();
                     levelName = "endmenu.tmx";
-                    LoadLevel(levelName);                    
+                    LoadLevel(levelName);
                 }
-            }
-            if (levelName == "mainmenu.tmx") {
-                //Settings.score = 0;
             }
         }
     }
@@ -52,12 +52,12 @@ public class MyGame : Game
         {
             DestroyLevel();
             level = new Level(nextLevel);
-            AddChild(level);    
-            nextLevel = null;            
+            AddChild(level);
+            nextLevel = null;
         }
     }
 
-     public void DestroyLevel()
+    public void DestroyLevel()
     {
         List<GameObject> children = GetChildren();
         foreach (GameObject child in children)
@@ -66,10 +66,10 @@ public class MyGame : Game
         }
     }
     public void LoadLevel(string filename)
-    {      
-        nextLevel = filename; 
+    {
+        nextLevel = filename;
     }
-            
+
     static void Main()                          // Main() is the first method that's called when the program is run
     {
         Settings.Load();

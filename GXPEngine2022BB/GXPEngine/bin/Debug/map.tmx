@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="43" height="170" tilewidth="32" tileheight="32" infinite="0" nextlayerid="15" nextobjectid="152">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="43" height="170" tilewidth="32" tileheight="32" infinite="0" nextlayerid="15" nextobjectid="278">
  <tileset firstgid="1" name="[32x32] Rocky Grass" tilewidth="32" tileheight="32" tilecount="0" columns="8">
   <image source="D:/GXPEngine2022BB/GXPEngine/bin/Debug/[32x32] Rocky Grass.png" width="256" height="224"/>
  </tileset>
  <tileset firstgid="1" name="background" tilewidth="32" tileheight="32" tilecount="7140" columns="42">
   <image source="background.png" width="1366" height="5464"/>
  </tileset>
- <objectgroup id="13" name="Background" visible="0">
+ <objectgroup id="13" name="Background" locked="1">
   <object id="151" name="Background" type="Background" x="8" y="16" width="1352" height="5408"/>
  </objectgroup>
- <imagelayer id="14" name="Image Layer 1">
-  <image source="background.png" width="1366" height="5464"/>
- </imagelayer>
  <objectgroup id="2" name="Player">
   <object id="1" name="Player" type="Player" x="938.333" y="5176.49" width="76.9925" height="68.9925"/>
  </objectgroup>
@@ -58,6 +55,80 @@
   <object id="103" name="Fragile" type="FragilePlatform" x="202.667" y="3342.67" width="120" height="40"/>
   <object id="104" name="Fragile" type="FragilePlatform" x="329.333" y="3256" width="120" height="40"/>
   <object id="149" name="DoubleJump" type="DoubleJumpPowerUp" x="1062" y="3229" width="44" height="38"/>
+  <object id="153" name="Platform" type="Platform" x="480" y="3026.86" width="212.121" height="45.4545"/>
+  <object id="154" name="Platform" type="Platform" x="288" y="2866.86" width="212.121" height="45.4545"/>
+  <object id="155" name="Platform" type="Platform" x="106" y="2690.86" width="207.454" height="45.4545"/>
+  <object id="156" name="Platform" type="Platform" x="896" y="3026.86" width="212.121" height="45.4545"/>
+  <object id="157" name="Platform" type="Platform" x="1024" y="2866.86" width="212.121" height="45.4545"/>
+  <object id="158" name="Platform" type="Platform" x="1152" y="2706.86" width="212.121" height="45.4545"/>
+  <object id="159" name="Platform" type="Platform" x="399.939" y="2604.13" width="212.121" height="45.4545"/>
+  <object id="160" name="Platform" type="Platform" x="661.939" y="2502.13" width="184.121" height="45.4545"/>
+  <object id="161" name="Platform" type="Platform" x="981.939" y="2578.13" width="212.121" height="45.4545"/>
+  <object id="162" name="Fragile" type="FragilePlatform" x="736" y="2704.86" width="120" height="40"/>
+  <object id="163" name="Fragile" type="FragilePlatform" x="122" y="3024.86" width="120" height="40"/>
+  <object id="164" name="Platform" type="Platform" x="743.833" y="2286.19" width="184.121" height="45.4545"/>
+  <object id="165" name="Platform" type="Platform" x="559.333" y="2286.19" width="184.121" height="45.4545"/>
+  <object id="166" name="Fragile" type="FragilePlatform" x="294" y="2284.86" width="120" height="40"/>
+  <object id="167" name="Fragile" type="FragilePlatform" x="122" y="2144.86" width="120" height="40"/>
+  <object id="168" name="Fragile" type="FragilePlatform" x="435.333" y="2176.86" width="120" height="40"/>
+  <object id="169" name="Fragile" type="FragilePlatform" x="939.333" y="2179.53" width="120" height="40"/>
+  <object id="170" name="Fragile" type="FragilePlatform" x="1150" y="2288.86" width="120" height="40"/>
+  <object id="171" name="Fragile" type="FragilePlatform" x="1264.67" y="2148.86" width="120" height="40"/>
+  <object id="172" name="Fragile" type="FragilePlatform" x="878" y="1916.86" width="120" height="40"/>
+  <object id="173" name="Fragile" type="FragilePlatform" x="423.333" y="1992.86" width="120" height="40"/>
+  <object id="174" name="Platform" type="Platform" x="648.606" y="2060.8" width="184.121" height="45.4545"/>
+  <object id="175" name="Platform" type="Platform" x="160.667" y="1880.86" width="184.121" height="45.4545"/>
+  <object id="176" name="Platform" type="Platform" x="1133.33" y="1822.19" width="184.121" height="45.4545"/>
+  <object id="177" name="Platform" type="Platform" x="1161.27" y="1544.13" width="184.121" height="45.4545"/>
+  <object id="178" name="Fragile" type="FragilePlatform" x="1000" y="1592.86" width="120" height="40"/>
+  <object id="181" name="Platform" type="Platform" x="749.273" y="1589.47" width="184.121" height="45.4545"/>
+  <object id="182" name="Fragile" type="FragilePlatform" x="574.667" y="1566.86" width="120" height="40"/>
+  <object id="183" name="Fragile" type="FragilePlatform" x="389.333" y="1544.19" width="120" height="40"/>
+  <object id="184" name="Fragile" type="FragilePlatform" x="252" y="1488.19" width="120" height="40"/>
+  <object id="185" name="Fragile" type="FragilePlatform" x="413.333" y="1329.53" width="120" height="40"/>
+  <object id="186" name="Fragile" type="FragilePlatform" x="617.333" y="1272.19" width="120" height="40"/>
+  <object id="187" name="Fragile" type="FragilePlatform" x="749.333" y="1162.86" width="120" height="40"/>
+  <object id="188" name="Fragile" type="FragilePlatform" x="917.333" y="1098.86" width="120" height="40"/>
+  <object id="189" name="Fragile" type="FragilePlatform" x="1090.67" y="1094.86" width="120" height="40"/>
+  <object id="191" name="Fragile" type="FragilePlatform" x="146.667" y="1230.86" width="120" height="40"/>
+  <object id="192" name="Fragile" type="FragilePlatform" x="266.667" y="1121.53" width="120" height="40"/>
+  <object id="193" name="Fragile" type="FragilePlatform" x="393.333" y="1034.86" width="120" height="40"/>
+  <object id="194" name="DoubleJump" type="DoubleJumpPowerUp" x="1126" y="1007.86" width="44" height="38"/>
+  <object id="195" name="DoubleJump" type="DoubleJumpPowerUp" x="716.667" y="1981.19" width="44" height="38"/>
+  <object id="196" name="DoubleJump" type="DoubleJumpPowerUp" x="220.667" y="1798.53" width="44" height="38"/>
+  <object id="198" name="DoubleJump" type="DoubleJumpPowerUp" x="183.333" y="1170.53" width="44" height="38"/>
+  <object id="199" name="DoubleJump" type="DoubleJumpPowerUp" x="156.667" y="2959.86" width="44" height="38"/>
+  <object id="200" name="Leaf" type="Leaf" x="775.333" y="2626.69" width="44" height="38"/>
+  <object id="201" name="Leaf" type="Leaf" x="1186" y="2210.36" width="44" height="38"/>
+  <object id="202" name="Leaf" type="Leaf" x="1302" y="2062.36" width="44" height="38"/>
+  <object id="203" name="Leaf" type="Leaf" x="326" y="2219.69" width="44" height="38"/>
+  <object id="204" name="Leaf" type="Leaf" x="164.667" y="2053.03" width="44" height="38"/>
+  <object id="206" name="Leaf" type="Leaf" x="1036.67" y="1503.69" width="44" height="38"/>
+  <object id="207" name="Leaf" type="Leaf" x="814" y="1499.69" width="44" height="38"/>
+  <object id="208" name="Leaf" type="Leaf" x="610" y="1478.36" width="44" height="38"/>
+  <object id="209" name="Leaf" type="Leaf" x="284.666" y="1409.02" width="44" height="38"/>
+  <object id="210" name="Leaf" type="Leaf" x="654" y="1194.36" width="44" height="38"/>
+  <object id="211" name="Leaf" type="Leaf" x="952.666" y="1019.69" width="44" height="38"/>
+  <object id="213" name="Leaf" type="Leaf" x="303.333" y="1054.36" width="44" height="38"/>
+  <object id="214" name="Leaf" type="Leaf" x="432.666" y="959.688" width="44" height="38"/>
+  <object id="216" name="Platform" type="Platform" x="477.333" y="834.858" width="212.121" height="45.4545"/>
+  <object id="217" name="Platform" type="Platform" x="285.333" y="674.858" width="212.121" height="45.4545"/>
+  <object id="218" name="Platform" type="Platform" x="103.333" y="498.858" width="207.454" height="45.4545"/>
+  <object id="219" name="Platform" type="Platform" x="893.333" y="834.858" width="212.121" height="45.4545"/>
+  <object id="220" name="Platform" type="Platform" x="1021.33" y="674.858" width="212.121" height="45.4545"/>
+  <object id="221" name="Platform" type="Platform" x="1149.33" y="514.858" width="212.121" height="45.4545"/>
+  <object id="222" name="Platform" type="Platform" x="397.272" y="412.128" width="212.121" height="45.4545"/>
+  <object id="223" name="Platform" type="Platform" x="659.272" y="310.128" width="184.121" height="45.4545"/>
+  <object id="224" name="Platform" type="Platform" x="979.272" y="386.128" width="212.121" height="45.4545"/>
+  <object id="225" name="Fragile" type="FragilePlatform" x="733.333" y="512.858" width="120" height="40"/>
+  <object id="226" name="Fragile" type="FragilePlatform" x="119.333" y="832.858" width="120" height="40"/>
+  <object id="227" name="Platform" type="Platform" x="741.166" y="94.1878" width="184.121" height="45.4545"/>
+  <object id="228" name="Platform" type="Platform" x="556.666" y="94.1878" width="184.121" height="45.4545"/>
+  <object id="229" name="Fragile" type="FragilePlatform" x="291.333" y="92.8578" width="120" height="40"/>
+  <object id="233" name="Fragile" type="FragilePlatform" x="1147.33" y="96.8578" width="120" height="40"/>
+  <object id="262" name="DoubleJump" type="DoubleJumpPowerUp" x="154" y="767.858" width="44" height="38"/>
+  <object id="263" name="Leaf" type="Leaf" x="772.666" y="434.688" width="44" height="38"/>
+  <object id="266" name="Leaf" type="Leaf" x="323.333" y="27.6878" width="44" height="38"/>
  </objectgroup>
  <objectgroup id="9" name="DoubleJump">
   <object id="126" name="DoubleJump" type="DoubleJumpPowerUp" x="652.667" y="4202.33" width="44" height="38"/>
