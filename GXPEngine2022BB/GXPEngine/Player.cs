@@ -8,6 +8,12 @@ using TiledMapParser;
 
 public class Player : AnimationSprite
 {
+    public bool doubleJump { get; private set; }
+
+    public int score { get; private set; }
+
+    public bool playerDead { get; private set; }
+
     private int speed = 5;
     private float gravity = 0.9f;
     private float ySpeed = 0;
@@ -16,36 +22,40 @@ public class Player : AnimationSprite
     private bool isMoving;
     private bool isFacingRight;
 
-    public bool doubleJump { get; private set; }
-
-    public int score { get; private set; }
-
-    public bool playerDead { get; private set; }
-
     private int boundary;
     private float highest;
     private bool firstTime;
 
-    public Sprite sensor;
+    private Sprite sensor;
+    private Sprite sensorHead;
 
-    Sound jumpSound;
-    Sound pickSound;
+    private Sound jumpSound;
+    private Sound pickSound;
 
     public Player(TiledObject obj = null) : base("playerSpritesheet.png", 4, 4, -1, false, true)
     {
-        jumpSound = new Sound("jumpSound.mp3");
-        pickSound = new Sound("pickSound.mp3");
+        jumpSound = new Sound("Sounds/jumpSound.mp3");
+        pickSound = new Sound("Sounds/pickSound.mp3");
 
         boundary = game.height / 2;
-        SetOrigin(width/2, height/2);
-        this.SetScaleXY(.5f,.5f);
+
+        SetOrigin(width / 2, height / 2);
+        this.SetScaleXY(.5f, .5f);
+        
         score = 0;
         playerDead = false;
         isJumping = false;
+
         sensor = new Sprite("circle.png");
         AddChild(sensor);
-        sensor.SetXY((width/2) - 60, height);
-        sensor.alpha = 0.5f;
+        sensor.SetXY((width / 2) - 60, height);
+        sensor.alpha = 0;
+
+        sensorHead = new Sprite("circle.png");
+        AddChild(sensorHead);
+        sensorHead.SetXY((width / 2) - 60, -170);
+        sensorHead.alpha = 0;
+        sensorHead.collider.isTrigger = true;
     }
 
     void Update()
@@ -87,7 +97,8 @@ public class Player : AnimationSprite
     {
         int xSpeed = 0;
 
-        if (Input.GetKey(Key.D)) {
+        if (Input.GetKey(Key.D))
+        {
             xSpeed = speed;
             isMoving = true;
             if (!isFacingRight)
@@ -95,8 +106,9 @@ public class Player : AnimationSprite
                 Flip();
             }
         }
-        else if (Input.GetKey(Key.A)) { 
-            xSpeed = -speed; 
+        else if (Input.GetKey(Key.A))
+        {
+            xSpeed = -speed;
             isMoving = true;
             if (isFacingRight)
             {
@@ -106,8 +118,8 @@ public class Player : AnimationSprite
         else { isMoving = false; }
 
 
-        //Move(xSpeed, 0);
-        MoveUntilCollision(xSpeed, 0);
+        Move(xSpeed, 0);
+        //MoveUntilCollision(xSpeed, 0);
     }
 
     void PlayerJump()
@@ -137,16 +149,17 @@ public class Player : AnimationSprite
                 doubleJump = false;
                 jumpSound.Play(false, 0, 10, 0);
             }
-          
+
         }
         if (isJumping)
         {
-            score++;
+            Settings.score++;
             isMoving = false;
         }
     }
 
-    void PlayerDead() {
+    void PlayerDead()
+    {
         if (this.y > game.height)
         {
             playerDead = true;
@@ -164,7 +177,7 @@ public class Player : AnimationSprite
 
         if (other is Leaf)
         {
-            score += 100;
+            Settings.score += 100;
             other.LateDestroy();
             pickSound.Play(false, 0, 10, 0);
         }
@@ -180,18 +193,29 @@ public class Player : AnimationSprite
     {
         foreach (GameObject other in sensor.GetCollisions())
         {
-
-            if(other is Platform) {
-                
+            if (other is Platform)
+            {
+                other.collider.isTrigger = false;
             }
+           
+
             if (other is FragilePlatform)
             {
-                
+
                 FragilePlatform fragilePlatform = other as FragilePlatform;
-                
+
                 fragilePlatform.detect = true;
                 fragilePlatform.Timer();
 
+            }
+        }
+
+        foreach (GameObject other in sensorHead.GetCollisions())
+        {
+
+            if (other is Platform)
+            {
+                other.collider.isTrigger = true;
             }
         }
     }

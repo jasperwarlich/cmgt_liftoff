@@ -8,26 +8,24 @@ using TiledMapParser;
 
 public class FragilePlatform : Platform
 {
-    int timer = 1000;
-
     public bool detect;
+
+    private int timer = 3000;
+
     public FragilePlatform(TiledObject obj = null) : base("leaf_platform_80.png")
     {
         detect = false;
     }
 
-    //void Update() { base.Update(); }
-
     public void Timer()
     {
         timer -= Time.time / 1000;
         
-        if (detect) {
-           
+        if (detect) {          
             if (timer <= 0)
             {
                 this.LateDestroy();
-                timer = 1000;
+                timer = 3000;
             }
         }
     }

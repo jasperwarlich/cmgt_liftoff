@@ -5,17 +5,17 @@ using System.Collections.Generic;
 
 public class Level : GameObject
 {
-    private TiledLoader loader;
 
     public Player player { get; private set; }
 
-    HUD hud;
+    private TiledLoader loader;
+    private HUD hud;
 
-    List<Platform> platforms;
-    List<DoubleJumpPowerUp> doubleJumps;
+    private List<Platform> platforms;
+    private List<DoubleJumpPowerUp> doubleJumps;
+
     private int platformAmount;
     private int doublePlatformAmount;
-
 
     public Level(string filename)
     {
@@ -26,9 +26,7 @@ public class Level : GameObject
         CreateLevel();
 
         platformAmount = platforms.Count;
-        doublePlatformAmount = doubleJumps.Count;
-        
-        
+        doublePlatformAmount = doubleJumps.Count;      
     }
 
     void Update()
@@ -126,7 +124,7 @@ public class Level : GameObject
     {
         //loader.rootObject = this;
         //loader.autoInstance = true;
-        loader.AddManualType("Platform", "FragilePlatform", "Player", "Wings", "DoubleJump", "Button");
+        loader.AddManualType("Platform", "FragilePlatform", "Player", "Wings", "DoubleJump", "Button", "BackButton");
         loader.OnObjectCreated += TiledLoader_OnObjectCreated;
         loader.LoadObjectGroups();
         loader.addColliders = true;
@@ -184,9 +182,13 @@ public class Level : GameObject
             button.SetXY(obj.X, obj.Y);
             AddChild(button);
         }
-       
 
-
+        if (obj.Type == "BackButton")
+        {
+            BackButton button = new BackButton();
+            button.SetXY(obj.X, obj.Y);
+            AddChild(button);
+        }
 
     }
 }
