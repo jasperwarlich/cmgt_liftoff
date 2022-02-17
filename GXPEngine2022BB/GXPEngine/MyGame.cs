@@ -34,6 +34,7 @@ public class MyGame : Game
             {
                 if (level.player.playerDead)
                 {
+                    Console.WriteLine("aaaaaaaa");
                     DestroyLevel();
                     levelName = "endmenu.tmx";
                     LoadLevel(levelName);                    

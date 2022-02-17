@@ -12,29 +12,22 @@ public class Level : GameObject
     private HUD hud;
 
     private List<Platform> platforms;
-    private List<DoubleJumpPowerUp> doubleJumps;
 
-    private int platformAmount;
-    private int doublePlatformAmount;
 
     public Level(string filename)
     {
         loader = new TiledLoader(filename);
-        platforms = new List<Platform>();
-        doubleJumps = new List<DoubleJumpPowerUp>();
-        
-        CreateLevel();
 
-        platformAmount = platforms.Count;
-        doublePlatformAmount = doubleJumps.Count;      
+        var myMap = loader.map;
+        int heightpixels = myMap.Height * myMap.TileHeight;
+        SetXY(0, -heightpixels + game.height);
+
+        CreateLevel();
     }
 
     void Update()
     {
-       
         hud.ChechScore();
-        //PlatformsCheck();
-        //PlatformsSpawn();
     }
 
     /*
@@ -122,9 +115,7 @@ public class Level : GameObject
 
     void CreateLevel()
     {
-        //loader.rootObject = this;
-        //loader.autoInstance = true;
-        loader.AddManualType("Platform", "FragilePlatform", "Player", "Wings", "DoubleJump", "Button", "BackButton");
+        loader.AddManualType("Platform", "FragilePlatform", "Player", "Wings", "DoubleJump", "Button", "BackButton", "Background");
         loader.OnObjectCreated += TiledLoader_OnObjectCreated;
         loader.LoadObjectGroups();
         loader.addColliders = true;
@@ -132,26 +123,25 @@ public class Level : GameObject
         loader.addColliders = false;
         loader.LoadTileLayers(1);
 
-        player = game.FindObjectOfType<Player>();
+        player = FindObjectOfType<Player>();
         hud = new HUD(player);
         game.AddChild(hud);
-        
     }
 
     private void TiledLoader_OnObjectCreated(Sprite sprite, TiledObject obj)
     {
+
         if (obj.Type == "Platform")
         {
             Platform platform = new Platform("solidTile.png");
             platform.SetXY(obj.X, obj.Y);
-            platforms.Add(platform);
             AddChild(platform);
         }
 
         if (obj.Type == "FragilePlatform")
         {
             FragilePlatform fragilePlatform = new FragilePlatform();
-            fragilePlatform.SetXY(obj.X, obj.Y);      
+            fragilePlatform.SetXY(obj.X, obj.Y);
             AddChild(fragilePlatform);
         }
 
@@ -173,9 +163,9 @@ public class Level : GameObject
         {
             Player player = new Player();
             player.SetXY(obj.X, obj.Y);
-            game.AddChild(player);
+            AddChild(player);
         }
-        
+
         if (obj.Type == "Button")
         {
             Button button = new Button();
@@ -189,6 +179,11 @@ public class Level : GameObject
             button.SetXY(obj.X, obj.Y);
             AddChild(button);
         }
-
+        if (obj.Type == "Background")
+        {
+            Background background = new Background();
+            background.SetXY(obj.X, obj.Y);
+            AddChild(background);
+        }
     }
 }

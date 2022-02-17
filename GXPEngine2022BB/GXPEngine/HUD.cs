@@ -15,8 +15,6 @@ public class HUD : GameObject
 
     private Font font = Utils.LoadFont("ArcadeNormal-ZDZ.ttf", 15);
 
-    private int lastPoints;
-
     public HUD(Player player)
     {
         this.player = player;
@@ -43,7 +41,6 @@ public class HUD : GameObject
 
             doubleJump.Clear(Color.Transparent);
             doubleJump.Text(String.Format("Double Jump: \n " + (player.doubleJump ? "Active!" : "Not Active!")));
-            lastPoints = Settings.score;
         }
 
         if (((MyGame)game).levelName == "endmenu.tmx")

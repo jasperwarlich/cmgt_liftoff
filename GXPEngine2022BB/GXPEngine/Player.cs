@@ -41,7 +41,7 @@ public class Player : AnimationSprite
 
         SetOrigin(width / 2, height / 2);
         this.SetScaleXY(.5f, .5f);
-        
+
         score = 0;
         playerDead = false;
         isJumping = false;
@@ -120,13 +120,14 @@ public class Player : AnimationSprite
         else { isMoving = false; }
 
 
-        Move(xSpeed, 0);
-        //MoveUntilCollision(xSpeed, 0);
+        //Move(xSpeed, 0);
+        MoveUntilCollision(xSpeed, 0);
     }
 
     void PlayerJump()
     {
         ySpeed += gravity;
+
         if (MoveUntilCollision(0, ySpeed) != null)
         {
             if (ySpeed > 0)
@@ -162,7 +163,8 @@ public class Player : AnimationSprite
 
     void PlayerDead()
     {
-        if (this.y > game.height)
+        var screenPos = TransformPoint(0, 0);
+        if (screenPos.y > game.height)
         {
             playerDead = true;
         }
@@ -199,7 +201,7 @@ public class Player : AnimationSprite
             {
                 other.collider.isTrigger = false;
             }
-           
+
 
             if (other is FragilePlatform)
             {
