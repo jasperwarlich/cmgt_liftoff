@@ -9,7 +9,7 @@ using TiledMapParser;
 public class Background : Sprite
 {
 
-    public Background(TiledObject obj = null) : base("background.png")
+    public Background(TiledObject obj = null) : base("background2.png")
     {
         this.collider.isTrigger = true;
     }

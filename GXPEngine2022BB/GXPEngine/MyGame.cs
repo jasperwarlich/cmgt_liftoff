@@ -46,10 +46,17 @@ public class MyGame : Game
         }
 
         ScrollingSpeed();
+
+        var screenPos = TransformPoint(0,0);
+        if (screenPos.y >= game.height) {
+            scrollingSpeed = 0;
+        }
     }
 
     void ScrollingSpeed() {
-
+        if (Settings.score < 500) {
+            scrollingSpeed = .5f;
+        }
         if (Settings.score >= 500 && Settings.score <= 1000)
         {
             scrollingSpeed = 1f;

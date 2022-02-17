@@ -210,8 +210,8 @@ public class Player : AnimationSprite
 
                 fragilePlatform.detect = true;
                 fragilePlatform.Timer();
-
             }
+            
         }
 
         foreach (GameObject other in sensorHead.GetCollisions())

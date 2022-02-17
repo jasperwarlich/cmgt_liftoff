@@ -10,7 +10,7 @@ public class FragilePlatform : Platform
 {
     public bool detect;
 
-    private int timer = 2500;
+    public int timer = 2500;
 
     public FragilePlatform(TiledObject obj = null) : base("leaf_platform_80.png")
     {

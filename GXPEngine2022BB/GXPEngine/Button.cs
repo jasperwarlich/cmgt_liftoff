@@ -16,44 +16,31 @@ public class Button : Sprite
     void Update()
     {
         //Check if the cursor is over the start button and if it is pressed
-        if (this.HitTestPoint(Input.mouseX, Input.mouseY))
+        if (Input.GetKeyDown(Key.SPACE))
         {
-            this.SetColor(1, 1, 1);
-            if (Input.GetMouseButtonDown(0))
-            {
-                ((MyGame)game).levelName = "map.tmx";
-                ((MyGame)game).DestroyLevel();
-                ((MyGame)game).LoadLevel(((MyGame)game).levelName);
-            }
-        }
-        else
-        {
-            this.SetColor(0, 0, 0);
+            ((MyGame)game).levelName = "map.tmx";
+            ((MyGame)game).DestroyLevel();
+            ((MyGame)game).LoadLevel(((MyGame)game).levelName);
         }
     }
 }
 
-public class BackButton : Sprite {
+public class BackButton : Sprite
+{
 
-    public BackButton() : base("backButton.png") {
+    public BackButton() : base("backButton.png")
+    {
+
     }
 
     void Update()
     {
         //Check if the cursor is over the start button and if it is pressed
-        if (this.HitTestPoint(Input.mouseX, Input.mouseY))
+        if (Input.GetKeyDown(Key.SPACE))
         {
-            this.SetColor(1, 1, 1);
-            if (Input.GetMouseButtonDown(0))
-            {
-                ((MyGame)game).levelName = "mainmenu.tmx";
-                ((MyGame)game).DestroyLevel();
-                ((MyGame)game).LoadLevel(((MyGame)game).levelName);
-            }
-        }
-        else
-        {
-            this.SetColor(0, 0, 0);
+            ((MyGame)game).levelName = "mainmenu.tmx";
+            ((MyGame)game).DestroyLevel();
+            ((MyGame)game).LoadLevel(((MyGame)game).levelName);
         }
     }
 }
