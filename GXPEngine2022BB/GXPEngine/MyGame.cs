@@ -48,7 +48,7 @@ public class MyGame : Game
         ScrollingSpeed();
 
         var screenPos = TransformPoint(0,0);
-        if (screenPos.y >= game.height) {
+        if (screenPos.y == game.height) {
             scrollingSpeed = 0;
         }
     }
@@ -75,6 +75,8 @@ public class MyGame : Game
             DestroyLevel();
             level = new Level(nextLevel);
             AddChild(level);
+            level.hud = new HUD(level.player);
+            AddChild(level.hud);
             nextLevel = null;
         }
     }

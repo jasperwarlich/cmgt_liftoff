@@ -9,7 +9,7 @@ public class Level : GameObject
     public Player player { get; private set; }
 
     private TiledLoader loader;
-    private HUD hud;
+    public HUD hud;
 
     private List<Platform> platforms;
 
@@ -124,13 +124,12 @@ public class Level : GameObject
         loader.LoadTileLayers(1);
 
         player = FindObjectOfType<Player>();
-        hud = new HUD(player);
-        game.AddChild(hud);
+        //hud = new HUD(player);
+        //parent.AddChild(hud);
     }
 
     private void TiledLoader_OnObjectCreated(Sprite sprite, TiledObject obj)
     {
-
         if (obj.Type == "Platform")
         {
             Platform platform = new Platform("solidTile.png");
@@ -186,4 +185,6 @@ public class Level : GameObject
             AddChild(background);
         }
     }
+
+ 
 }

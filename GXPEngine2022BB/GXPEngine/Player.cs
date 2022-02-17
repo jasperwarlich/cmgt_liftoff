@@ -32,6 +32,8 @@ public class Player : AnimationSprite
     private Sound jumpSound;
     private Sound pickSound;
 
+    private int timer;
+
     public Player(TiledObject obj = null) : base("playerSpritesheet.png", 4, 4, -1, false, true)
     {
         jumpSound = new Sound("Sounds/jumpSound.mp3");
@@ -205,11 +207,16 @@ public class Player : AnimationSprite
 
             if (other is FragilePlatform)
             {
-
+                
                 FragilePlatform fragilePlatform = other as FragilePlatform;
-
                 fragilePlatform.detect = true;
-                fragilePlatform.Timer();
+                if (fragilePlatform.detect == true) {
+                    timer -= Time.time / 1000;
+                }
+                if (isJumping) {
+                    timer = 1500;
+                }
+                if (timer <= 0) { other.LateDestroy(); }
             }
             
         }

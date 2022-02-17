@@ -10,21 +10,8 @@ public class FragilePlatform : Platform
 {
     public bool detect;
 
-    public int timer = 2500;
-
     public FragilePlatform(TiledObject obj = null) : base("leaf_platform_80.png")
     {
         detect = false;
-    }
-    public void Timer()
-    {
-        timer -= Time.time / 1000;
-        if (detect) {          
-            if (timer <= 0)
-            {
-                this.LateDestroy();
-                timer = 2500;
-            }
-        }
     }
 }
