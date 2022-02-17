@@ -12,8 +12,8 @@ public class MyGame : Game
     string nextLevel = null;
 
     float scrollingSpeed = 0.5f;
+    bool endLevel;
 
-    int bla = 200;
     Sound menuBackgroundMusic;
     SoundChannel musicChannel;
 
@@ -32,12 +32,23 @@ public class MyGame : Game
             if (levelName == "map.tmx")
             {
                 level.y += scrollingSpeed;
+                if (level.y >= game.y)
+                {
+                    scrollingSpeed = 0;
+                    level.y = game.y;
+                    endLevel = true;
+                    if (endLevel)
+                    {
+                        DestroyLevel();
+                        levelName = "endmenu.tmx";
+                        LoadLevel(levelName);
+                    }
+                }
             }
             if (level.player != null)
             {
                 if (level.player.playerDead)
                 {
-                    Console.WriteLine("aaaaaaaa");
                     DestroyLevel();
                     levelName = "endmenu.tmx";
                     LoadLevel(levelName);
@@ -47,14 +58,17 @@ public class MyGame : Game
 
         ScrollingSpeed();
 
-        var screenPos = TransformPoint(0,0);
-        if (screenPos.y == game.height) {
+        var screenPos = TransformPoint(0, 0);
+        if (screenPos.y == game.height)
+        {
             scrollingSpeed = 0;
         }
     }
 
-    void ScrollingSpeed() {
-        if (Settings.score < 500) {
+    void ScrollingSpeed()
+    {
+        if (Settings.score < 500)
+        {
             scrollingSpeed = .5f;
         }
         if (Settings.score >= 500 && Settings.score <= 1000)

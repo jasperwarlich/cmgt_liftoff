@@ -211,7 +211,8 @@ public class Player : AnimationSprite
                 FragilePlatform fragilePlatform = other as FragilePlatform;
                 fragilePlatform.detect = true;
                 if (fragilePlatform.detect == true) {
-                    timer -= Time.time / 1000;
+                    timer -= Time.deltaTime;
+                    //Console.WriteLine(timer);
                 }
                 if (isJumping) {
                     timer = 1500;
