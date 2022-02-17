@@ -115,7 +115,7 @@ public class Level : GameObject
 
     void CreateLevel()
     {
-        loader.AddManualType("Platform", "FragilePlatform", "Player", "Wings", "DoubleJump", "Button", "BackButton", "Background");
+        loader.AddManualType("Platform", "FragilePlatform", "Player", "Wings", "DoubleJump", "Button", "BackButton", "Background", "SpikePlatform");
         loader.OnObjectCreated += TiledLoader_OnObjectCreated;
         loader.LoadObjectGroups();
         loader.addColliders = true;
@@ -130,6 +130,13 @@ public class Level : GameObject
 
     private void TiledLoader_OnObjectCreated(Sprite sprite, TiledObject obj)
     {
+        if (obj.Type == "Player")
+        {
+            Player player = new Player();
+            player.SetXY(obj.X, obj.Y);
+            AddChild(player);
+        }
+
         if (obj.Type == "Platform")
         {
             Platform platform = new Platform("solidTile.png");
@@ -158,12 +165,6 @@ public class Level : GameObject
             AddChild(doubleJump);
         }
 
-        if (obj.Type == "Player")
-        {
-            Player player = new Player();
-            player.SetXY(obj.X, obj.Y);
-            AddChild(player);
-        }
 
         if (obj.Type == "Button")
         {
@@ -178,11 +179,19 @@ public class Level : GameObject
             button.SetXY(obj.X, obj.Y);
             AddChild(button);
         }
+
         if (obj.Type == "Background")
         {
             Background background = new Background();
             background.SetXY(obj.X, obj.Y);
             AddChild(background);
+        }
+
+        if (obj.Type == "SpikePlatform")
+        {
+            SpikePlatform spikePlatform = new SpikePlatform();
+            spikePlatform.SetXY(obj.X, obj.Y);
+            AddChild(spikePlatform);
         }
     }
 

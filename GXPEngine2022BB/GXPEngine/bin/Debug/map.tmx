@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="43" height="250" tilewidth="32" tileheight="32" infinite="0" nextlayerid="15" nextobjectid="553">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="43" height="250" tilewidth="32" tileheight="32" infinite="0" nextlayerid="15" nextobjectid="563">
  <tileset firstgid="1" name="[32x32] Rocky Grass" tilewidth="32" tileheight="32" tilecount="0" columns="8">
   <image source="D:/GXPEngine2022BB/GXPEngine/bin/Debug/[32x32] Rocky Grass.png" width="256" height="224"/>
  </tileset>
  <tileset firstgid="1" name="background" tilewidth="32" tileheight="32" tilecount="7140" columns="42">
   <image source="background.png" width="1366" height="5464"/>
  </tileset>
- <objectgroup id="13" name="Background">
+ <objectgroup id="13" name="Background" locked="1">
   <object id="151" name="Background" type="Background" x="0" y="0" width="1376" height="7997"/>
  </objectgroup>
  <objectgroup id="2" name="Player">
@@ -58,7 +58,6 @@
   <object id="167" name="Fragile" type="FragilePlatform" x="386" y="4560.86" width="120" height="40"/>
   <object id="170" name="Fragile" type="FragilePlatform" x="1195.33" y="4919.52" width="120" height="40"/>
   <object id="171" name="Fragile" type="FragilePlatform" x="1055.34" y="4662.19" width="120" height="40"/>
-  <object id="172" name="Fragile" type="FragilePlatform" x="879.333" y="4388.86" width="120" height="40"/>
   <object id="174" name="Platform" type="Platform" x="648.606" y="4620.8" width="184.121" height="45.4545"/>
   <object id="175" name="Platform" type="Platform" x="72.6667" y="4487.52" width="184.121" height="45.4545"/>
   <object id="176" name="Platform" type="Platform" x="1133.33" y="4382.19" width="184.121" height="45.4545"/>
@@ -149,6 +148,16 @@
   <object id="550" name="Leaf" type="Leaf" x="320.665" y="369.594" width="44" height="38"/>
   <object id="551" name="Leaf" type="Leaf" x="449.998" y="274.924" width="44" height="38"/>
   <object id="552" name="Fragile" type="FragilePlatform" x="374" y="6405" width="120" height="40"/>
+  <object id="553" name="SpikePlatform" type="SpikePlatform" x="298.667" y="7208" width="150.667" height="52"/>
+  <object id="554" name="SpikePlatform" type="SpikePlatform" x="1123.33" y="6763.33" width="150.667" height="52"/>
+  <object id="555" name="SpikePlatform" type="SpikePlatform" x="48.6665" y="6459.33" width="150.667" height="52"/>
+  <object id="556" name="SpikePlatform" type="SpikePlatform" x="254" y="5046" width="150.667" height="52"/>
+  <object id="557" name="SpikePlatform" type="SpikePlatform" x="827.333" y="4355.33" width="150.667" height="52"/>
+  <object id="558" name="SpikePlatform" type="SpikePlatform" x="91.3332" y="2892.67" width="150.667" height="52"/>
+  <object id="559" name="SpikePlatform" type="SpikePlatform" x="1039.33" y="2135.33" width="150.667" height="52"/>
+  <object id="560" name="SpikePlatform" type="SpikePlatform" x="242" y="1820.67" width="150.667" height="52"/>
+  <object id="561" name="SpikePlatform" type="SpikePlatform" x="459.333" y="1043.33" width="150.667" height="52"/>
+  <object id="562" name="SpikePlatform" type="SpikePlatform" x="976.667" y="583.333" width="150.667" height="52"/>
  </objectgroup>
  <objectgroup id="9" name="DoubleJump">
   <object id="126" name="DoubleJump" type="DoubleJumpPowerUp" x="652.667" y="6762.33" width="44" height="38"/>

@@ -11,5 +11,6 @@ public class Platform : Sprite
     public Platform(String image, TiledObject obj = null) : base(image)
     {
         this.collider.isTrigger = true;
-    }    
+    }
+    
 }

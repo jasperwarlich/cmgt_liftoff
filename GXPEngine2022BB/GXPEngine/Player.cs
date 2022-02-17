@@ -15,9 +15,9 @@ public class Player : AnimationSprite
     public bool playerDead { get; private set; }
 
     private int speed = 5;
-    private float gravity = 0.9f;
+    private float gravity = .1f;
     private float ySpeed = 0;
-    private float jumpSpeed = -25;
+    private float jumpSpeed = -7;
     private bool isJumping;
     private bool isMoving;
     private bool isFacingRight;
@@ -34,7 +34,7 @@ public class Player : AnimationSprite
 
     private int timer;
 
-    public Player(TiledObject obj = null) : base("playerSpritesheet.png", 4, 4, -1, false, true)
+    public Player(TiledObject obj = null) : base("Spritesheet_grasshopper_final.png", 5, 3, -1, false, true)
     {
         jumpSound = new Sound("Sounds/jumpSound.mp3");
         pickSound = new Sound("Sounds/pickSound.mp3");
@@ -51,7 +51,7 @@ public class Player : AnimationSprite
         sensor = new Sprite("circle.png");
         AddChild(sensor);
         sensor.SetXY((width / 2) - 60, height + 50);
-        sensor.alpha = 0;
+        sensor.alpha = 1;
 
         sensorHead = new Sprite("circle.png");
         AddChild(sensorHead);
@@ -80,19 +80,19 @@ public class Player : AnimationSprite
         if (!isMoving)
         {
             //Idle animation
-            SetCycle(1, 3);
+            SetCycle(8, 4);
             Animate(0.02f);
         }
         else
         {
             //Walking animation
-            SetCycle(7, 8);
+            SetCycle(1, 8);
             Animate(0.02f);
         }
         //Jumping animation
         if (isJumping)
         {
-            SetCycle(4, 3);
+            SetCycle(12, 3);
             Animate(0.02f);
         }
     }
@@ -120,8 +120,9 @@ public class Player : AnimationSprite
             }
         }
         else { isMoving = false; }
-        Translate(xSpeed, 0);
-        //Move(xSpeed, 0);
+
+        //Translate(xSpeed, 0);
+        Move(xSpeed, 0);
         //MoveUntilCollision(xSpeed, 0);
     }
 
@@ -186,6 +187,13 @@ public class Player : AnimationSprite
             other.LateDestroy();
             pickSound.Play(false, 0, 10, 0);
         }
+        if (other is Platform) { 
+            other.collider.isTrigger = true;
+        }
+        if (other is SpikePlatform)
+        {
+            playerDead = true;
+        }
     }
 
     private void Flip()
@@ -218,8 +226,7 @@ public class Player : AnimationSprite
                     timer = 1500;
                 }
                 if (timer <= 0) { other.LateDestroy(); }
-            }
-            
+            }            
         }
 
         foreach (GameObject other in sensorHead.GetCollisions())
