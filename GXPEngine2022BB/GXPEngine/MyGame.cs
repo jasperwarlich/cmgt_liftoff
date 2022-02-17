@@ -11,7 +11,7 @@ public class MyGame : Game
 
     string nextLevel = null;
 
-    float scrollingSpeed = 0.5f;
+    float scrollingSpeed = 10.0f;
     bool endLevel;
 
     Sound menuBackgroundMusic;
@@ -22,7 +22,7 @@ public class MyGame : Game
         OnAfterStep += CheckLoadLevel;
         LoadLevel(levelName);
         menuBackgroundMusic = new Sound("Sounds/menuMusic.mp3", true, true);
-        // musicChannel = menuBackgroundMusic.Play(false, 0, .5f, 0);
+        musicChannel = menuBackgroundMusic.Play(false, 0, .5f, 0);
     }
 
     void Update()
@@ -32,6 +32,10 @@ public class MyGame : Game
             if (levelName == "map.tmx")
             {
                 level.y += scrollingSpeed;
+                if(level.player.y > level.y)
+                {
+                    Console.WriteLine("Player out of screen");
+                }
                 if (level.y >= game.y)
                 {
                     scrollingSpeed = 0;
@@ -69,17 +73,20 @@ public class MyGame : Game
     {
         if (Settings.score < 500)
         {
-            scrollingSpeed = .5f;
+            scrollingSpeed = 1f;
         }
         if (Settings.score >= 500 && Settings.score <= 1000)
         {
-            scrollingSpeed = 1f;
+            scrollingSpeed = 1.5f;
         }
         else if (Settings.score >= 1000 && Settings.score <= 1500)
         {
-            scrollingSpeed = 1.5f;
+            scrollingSpeed = 2f;
         }
-        else if (Settings.score >= 1500) { scrollingSpeed = 2f; }
+        else if (Settings.score >= 1500) { scrollingSpeed = 3f; }
+        else if (Settings.score >= 2500) { scrollingSpeed = 4f; }
+        else if (Settings.score >= 3500) { scrollingSpeed = 5f; }
+        
     }
 
     void CheckLoadLevel()

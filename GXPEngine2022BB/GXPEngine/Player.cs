@@ -15,9 +15,9 @@ public class Player : AnimationSprite
     public bool playerDead { get; private set; }
 
     private int speed = 5;
-    private float gravity = .1f;
+    private float gravity = 0.5f;
     private float ySpeed = 0;
-    private float jumpSpeed = -7;
+    private float jumpSpeed = -17;
     private bool isJumping;
     private bool isMoving;
     private bool isFacingRight;
